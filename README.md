@@ -49,7 +49,10 @@ On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`. Open a lab's 
 - **Available** · [Lab 1.9. Few-step image generation](labs/01-inside-a-model/09-few-step-image-generation/README.md)
 - **Available** · [Lab 1.10. Video generation inference](labs/01-inside-a-model/10-video-generation/README.md)
 - **Planned** · Profile prefill and decode on a real model and measure KV cache growth.
-- Compare operations with different arithmetic intensities and relate the measurements to estimates of bytes moved and operations performed.
+- **Available** · [Lab 1.11. Diagnosing inference bottlenecks](labs/01-inside-a-model/11-diagnosing-bottlenecks/README.md)
+- **Available** · [Lab 1.12. Arithmetic intensity and the roofline](labs/01-inside-a-model/12-arithmetic-intensity/README.md)
+- **Available** · [Lab 1.13. LLM prefill and decode bottlenecks](labs/01-inside-a-model/13-llm-inference-bottlenecks/README.md)
+- **Available** · [Lab 1.14. Image generation inference bottlenecks](labs/01-inside-a-model/14-image-generation-bottlenecks/README.md)
 
 ## 2. Running and benchmarking models
 
