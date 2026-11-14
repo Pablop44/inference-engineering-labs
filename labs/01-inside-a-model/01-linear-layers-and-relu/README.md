@@ -6,7 +6,7 @@ A linear layer turns input features into output features. This lab uses a model 
 
 ## Before you open the notebook
 
-A single output is a dot product plus a bias. Multiply each input feature by its corresponding weight, add the products, then add the bias. The notebook stores one weight row per output, so a three-input, two-output layer has weights of shape `(2, 3)` and two bias values.
+A single output is a dot product plus a bias. Multiply each input feature by its corresponding weight, add the products, then add the bias. The notebook stores the weights as `W` with shape `(2, 3)`. Each row contains the three weights for one output. The batch calculation uses `W.T`, which has shape `(3, 2)`. There is one bias value per output, so `b` has shape `(2,)`.
 
 For a batch of four samples, the input matrix `X` has shape `(4, 3)`. The calculation `X @ W.T + b` produces shape `(4, 2)`, adding the same bias to every sample. A tensor library can hand this work to a matrix multiplication kernel. The lab uses Python loops so you can inspect the calculation. It focuses on shapes and correctness.
 
