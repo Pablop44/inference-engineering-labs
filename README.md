@@ -26,8 +26,12 @@ Each lab will center on a question and a runnable experiment in a notebook or Py
 ## 1. Inside a model
 
 - **Available** · [Lab 1.1. Linear layers, matrix multiplication, and ReLU](labs/01-inside-a-model/01-linear-layers-and-relu/README.md). Build a linear layer, apply it to a batch, and see how an activation changes a two-layer network.
-- Build a small causal attention implementation and observe what changes as sequence length grows.
-- Instrument a small LLM to time prefill and decode separately. Record time to first token, time per output token, and KV cache growth.
+- **Available** · [Lab 1.2. LLM inference mechanics](labs/01-inside-a-model/02-llm-inference-mechanics/README.md)
+- **Available** · [Lab 1.3. LLM architecture](labs/01-inside-a-model/03-llm-architecture/README.md)
+- **Available** · [Lab 1.4. Transformer blocks](labs/01-inside-a-model/04-transformer-blocks/README.md)
+- **Available** · [Lab 1.5. Causal attention](labs/01-inside-a-model/05-causal-attention/README.md)
+- **Available** · [Lab 1.6. Mixture of experts](labs/01-inside-a-model/06-mixture-of-experts/README.md)
+- **Planned** · Profile prefill and decode on a real model and measure KV cache growth.
 - Compare operations with different arithmetic intensities and relate the measurements to estimates of bytes moved and operations performed.
 
 ## 2. Running and benchmarking models
