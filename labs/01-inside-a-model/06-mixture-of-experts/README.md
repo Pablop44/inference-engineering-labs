@@ -21,10 +21,16 @@ The notebook supplies simple scalar expert functions and fixed router scores. Ex
 
 Spend about 3–4 minutes on the worked example, 10–13 minutes on the exercises, and the last few minutes explaining the results.
 
+## Per-token sparsity and batch coverage
+
+Kiely distinguishes the experts selected for an individual token from the union of experts activated by a batch. Routing happens again at each mixture-of-experts layer. Our notebook models one layer. Even when each token uses only one expert, a batch with varied router scores can use every expert in the layer.
+
+**Optional extension.** Compare a batch where every token routes to expert 0 with a batch in which different tokens prefer different experts. Keep top-k fixed at one and compare total assignments, distinct active experts, and the busiest expert.
+
 ## Run the lab
 
 Open [lab.ipynb](lab.ipynb) in Jupyter with a Python 3 kernel. Run the setup, replace each `return None` placeholder, and run the check directly below it. The notebook uses only the Python standard library and includes the inputs.
 
-Reading companion for Section 2.2 of *Inference Engineering* by Philip Kiely (Baseten Books).
+**Reading** · Philip Kiely, *Inference Engineering* (Baseten Books), §2.2.4, pp. 53–54.
 
 [Back to the learning roadmap](../../../README.md#learning-roadmap)

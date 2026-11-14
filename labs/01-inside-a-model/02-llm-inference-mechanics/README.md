@@ -21,10 +21,16 @@ For a two-token prompt and three generated tokens, the cached path processes inp
 
 Spend about 3–4 minutes on the worked example, 10–13 minutes on the exercises, and the last few minutes explaining the results.
 
+## From logits to the next input
+
+Kiely breaks generation into formatting and tokenizing the request, running the model, and selecting a token from the resulting logits. The lab starts after tokenization and uses greedy selection. Sampling can retain several candidates, and a stop token or a token budget can end the decode loop.
+
+**Optional extension.** Compare greedy selection with sampling restricted to the top two candidates. Predict which IDs remain eligible and explain which selected ID would be fed into the next decode call.
+
 ## Run the lab
 
 Open [lab.ipynb](lab.ipynb) in Jupyter with a Python 3 kernel. Run the setup, replace each `return None` placeholder, and run the check directly below it. The notebook uses only the Python standard library and includes the inputs.
 
-Reading companion for Section 2.2 of *Inference Engineering* by Philip Kiely (Baseten Books).
+**Reading** · Philip Kiely, *Inference Engineering* (Baseten Books), §2.2, pp. 46–49.
 
 [Back to the learning roadmap](../../../README.md#learning-roadmap)

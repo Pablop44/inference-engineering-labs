@@ -21,10 +21,16 @@ For query `[1, 0]` and keys `[1, 0]` and `[0, 1]`, the scaled scores are about `
 
 Spend about 3–4 minutes on the worked example, 10–13 minutes on the exercises, and the last few minutes explaining the results.
 
+## Prefill versus cached decode attention
+
+Kiely distinguishes self-attention from cross-attention and connects the KV cache to repeated decoding. This lab uses causal self-attention. For a length-L prompt, the causal mask allows L(L+1)/2 query-key pairs during prefill. A single subsequent decode query can attend to L cached keys and its own new key, so that step has L+1 pairs. These are logical counts. A kernel can perform a different amount of work.
+
+**Optional extension.** Double the prompt length from 4 to 8. Compare how the visible prefill pairs and the pairs for one cached decode query grow.
+
 ## Run the lab
 
 Open [lab.ipynb](lab.ipynb) in Jupyter with a Python 3 kernel. Run the setup, replace each `return None` placeholder, and run the check directly below it. The notebook uses only the Python standard library and includes the inputs.
 
-Reading companion for Section 2.2 of *Inference Engineering* by Philip Kiely (Baseten Books).
+**Reading** · Philip Kiely, *Inference Engineering* (Baseten Books), §2.2.3, pp. 52–53.
 
 [Back to the learning roadmap](../../../README.md#learning-roadmap)

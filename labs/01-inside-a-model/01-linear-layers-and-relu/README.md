@@ -24,10 +24,16 @@ ReLU computes `max(0, x)` for each hidden value. Composing two affine layers giv
 
 Spend about 3–4 minutes on the worked example, 10–13 minutes on the exercises, and the last few minutes explaining the results.
 
+## Composing affine layers
+
+Build on Kiely's matrix composition example by tracking the biases too. With row-vector inputs, composing two affine layers gives weights `W1 @ W2` and bias `b1 @ W2 + b2`. In Exercise 3, inserting ReLU makes the slope depend on which hidden features are active.
+
+**Optional extension.** Collapse the scalar layers `3x + 1` and `2h - 4` into one expression. Predict the result at x = −2, 0, and 2, then compare it with the composed network with ReLU in between.
+
 ## Run the lab
 
 Open [lab.ipynb](lab.ipynb) in Jupyter with a Python 3 kernel. Run the setup, replace each `return None` placeholder, and run the check directly below it. The notebook uses only the Python standard library and includes the inputs.
 
-Inspired by the neural networks section of Philip Kiely's *Inference Engineering* (Baseten Books).
+**Reading** · Philip Kiely, *Inference Engineering* (Baseten Books), §§2.1.1–2.1.2, pp. 44–46.
 
 [Back to the learning roadmap](../../../README.md#learning-roadmap)

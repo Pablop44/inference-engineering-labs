@@ -21,10 +21,16 @@ For two tokens, a hidden width of three, and a vocabulary size of five, the embe
 
 Spend about 3–4 minutes on the worked example, 10–13 minutes on the exercises, and the last few minutes explaining the results.
 
+## Reading a model configuration
+
+Kiely uses the model configuration to connect architectural choices to runtime support. Hidden width and vocabulary size set the dimensions used in this lab. The number of blocks tells you how many times a hidden state passes through the block interface.
+
+**Optional extension.** Change only the vocabulary size in the toy configuration. Predict which matrix shapes change, then vary the number of layers and compare again.
+
 ## Run the lab
 
 Open [lab.ipynb](lab.ipynb) in Jupyter with a Python 3 kernel. Run the setup, replace each `return None` placeholder, and run the check directly below it. The notebook uses only the Python standard library and includes the inputs.
 
-Reading companion for Section 2.2 of *Inference Engineering* by Philip Kiely (Baseten Books).
+**Reading** · Philip Kiely, *Inference Engineering* (Baseten Books), §§2.2.1–2.2.2, pp. 49–50.
 
 [Back to the learning roadmap](../../../README.md#learning-roadmap)

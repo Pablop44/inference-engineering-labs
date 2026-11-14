@@ -14,6 +14,14 @@ Autoregressive generation changes what a serving system has to manage. The model
 
 The interesting part is that the best choice depends on the workload. A larger batch can increase throughput while making some users wait longer. Quantization can reduce memory use, but its effect on speed depends on the hardware and kernels, and its effect on quality needs to be measured. Learning to test these trade-offs helps you pick a runtime, size a deployment, and explain why a change helped.
 
+## Choose the workload before the metric
+
+Kiely's chapters on inference and prerequisites frame optimization around the application, model, and traffic. An interactive assistant might have a strict time-to-first-token target, while an offline embedding job might optimize documents per second. Decide what quality the workload needs and what delay or cost it can tolerate before comparing serving options.
+
+Measure both model execution and client-observed latency when the lab includes a service. For example, a request with 20 ms of queueing, 50 ms of model execution, and 10 ms of delivery takes 80 ms in this simplified breakdown. Even halving model execution leaves 55 ms end to end. Report a latency percentile such as p95 alongside throughput so slow requests stay visible.
+
+**Reading** · Philip Kiely, *Inference Engineering*, Chapters 0–1, especially pp. 25–26 and §§1.4.1–1.4.2, pp. 36–37.
+
 ## Who this is for
 
 These labs are for developers who know basic Python and have some familiarity with machine learning. ML engineers can use them to investigate model execution. Backend and infrastructure engineers can use them to study queues, concurrency, and the cost of serving models. Familiarity with tensors and HTTP is useful as the labs progress.

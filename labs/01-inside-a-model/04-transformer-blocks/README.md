@@ -21,10 +21,16 @@ The notebook supplies prefix averaging as a stand-in for causal attention and a 
 
 Spend about 3–4 minutes on the worked example, 10–13 minutes on the exercises, and the last few minutes explaining the results.
 
+## Hidden width and feed-forward weights
+
+The book separates the embedding, repeated blocks, and vocabulary head. Within a block it distinguishes attention, normalization, and the feed-forward network. The toy feed-forward function stands in for a position-wise network. In a simple two-projection version, the intermediate width can be larger than the residual width.
+
+**Optional extension.** Count the weights for the expansion and contraction of a width-4 feed-forward branch with intermediate widths 8 and 16. Explain why the output can still be added to a width-4 residual.
+
 ## Run the lab
 
 Open [lab.ipynb](lab.ipynb) in Jupyter with a Python 3 kernel. Run the setup, replace each `return None` placeholder, and run the check directly below it. The notebook uses only the Python standard library and includes the inputs.
 
-Reading companion for Section 2.2 of *Inference Engineering* by Philip Kiely (Baseten Books).
+**Reading** · Philip Kiely, *Inference Engineering* (Baseten Books), §2.2.2, pp. 50–51.
 
 [Back to the learning roadmap](../../../README.md#learning-roadmap)
