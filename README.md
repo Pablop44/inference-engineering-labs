@@ -2,13 +2,7 @@
 
 Reproducible labs for running, benchmarking, and serving machine learning models. The roadmap starts with individual model operations and builds toward an inference service tested under load.
 
-## Motivation
-
-I started this project while reading *Inference Engineering* by Philip Kiely. I wanted to work through the ideas in code, run experiments, and see how each design choice affects latency, throughput, memory, and output quality. I'm sharing that work so other developers can reproduce the results, compare them on their own hardware, and build on the experiments.
-
-## Who this is for
-
-The labs are for developers who know Python and have a basic understanding of machine learning. The first labs are designed for CPU. Exercises that need a GPU or multiple devices will specify the hardware up front.
+Start with [Chapter 0. Introduction to inference engineering](docs/00-introduction.md) for the project's motivation, intended audience, and software and hardware requirements.
 
 ## Learning roadmap
 
