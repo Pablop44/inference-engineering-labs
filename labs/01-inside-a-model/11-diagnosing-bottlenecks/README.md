@@ -2,6 +2,8 @@
 
 **Time** 15–20 minutes · **Hardware** CPU · **Software** Python 3 and Jupyter
 
+[Open notebook](lab.ipynb) · [Exercise plan](#lab-plan) · [Results to look for](#results-to-look-for)
+
 Which resource should you improve first?
 
 Kiely starts with two resources. **Compute throughput** tells you how many floating-point operations the hardware can execute per second. **Memory bandwidth** tells you how many bytes it can move per second. Work divided by throughput gives a compute time floor. Traffic divided by bandwidth gives a movement time floor. If both resources could overlap perfectly, execution would still take at least the larger of the two. Real latency can be longer because of imperfect overlap, synchronization, or overhead.
@@ -11,6 +13,13 @@ For 3 GFLOP and 100 MB on a device with 6 TFLOP/s and 200 GB/s, the two floors a
 ![Compute and memory time floors in milliseconds for two workloads.](diagram.png)
 
 A speedup of 1× means the modeled floor stayed the same. Compare the two component times again after an upgrade. If they were close to begin with, reducing one can make the other the new bottleneck.
+
+## Results to look for
+
+![Compare time floors in milliseconds. Workload A: 2.00 vs 0.25. Compute floor is larger; Workload B: 0.25 vs 1.50. Memory floor is larger; Upgrade: Recompute both. A different floor can dominate.](result-preview.png)
+
+1. Compute both times in seconds, then convert for display. Compare the larger value separately for each workload.
+2. A gain applies to the modeled floor. Check where the two floors cross before extrapolating the speedup.
 
 ## Lab plan
 

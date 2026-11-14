@@ -2,6 +2,8 @@
 
 **Time** 15–20 minutes · **Hardware** CPU · **Software** Python 3 and Jupyter
 
+[Open notebook](lab.ipynb) · [Exercise plan](#lab-plan) · [Results to look for](#results-to-look-for)
+
 Why does an image generator call its denoiser repeatedly?
 
 A diffusion-style pipeline starts with random values. At each step the model estimates a direction for changing the current sample. A **scheduler** determines the noise levels or timesteps to visit and how to use each prediction to update the sample. The updated sample becomes the next model input. In many pipelines this loop runs on a latent grid, which is decoded into pixels at the end.
@@ -9,6 +11,13 @@ A diffusion-style pipeline starts with random values. At each step the model est
 We will use a 6 × 6 pixel grid and a supplied **oracle** that knows the target. This makes the update easy to follow. A trained denoiser predicts a quantity the scheduler can use, such as noise, velocity, or a clean sample estimate. The oracle returns an update direction directly to isolate the loop. In this lab, if the current pixel is 0.8 and the oracle target is 0.2, the direction is −0.6. A step of size 0.5 produces 0.5. Repeating the same rule gives 0.35.
 
 ![Four pixel grids show seeded noise approaching a bright diamond after one, two, and four updates.](diagram.png)
+
+## Results to look for
+
+![Read the trajectory across steps. Seeded grid: 0.397 error. Before the first prediction; Two updates: 0.099 error. Feed back the updated grid; Four updates: 0.025 error. One oracle call per update.](result-preview.png)
+
+1. Keep the starting grid fixed when comparing step sizes. The one-step example changes only the size of the update.
+2. Check the saved grids in order. If early snapshots look like the final grid, check whether the updates reuse mutable row lists.
 
 ## Lab plan
 

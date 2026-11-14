@@ -2,6 +2,8 @@
 
 **Time** 15–20 minutes · **Hardware** CPU · **Software** Python 3 and Jupyter
 
+[Open notebook](lab.ipynb) · [Exercise plan](#lab-plan) · [Results to look for](#results-to-look-for)
+
 ## Concepts you will use
 
 A decoder generates text one token at a time. A token is an integer ID representing a piece of text. A forward pass produces scores for possible next tokens, and greedy selection picks the highest score.
@@ -11,6 +13,13 @@ A decoder generates text one token at a time. A token is an integer ID represent
 For a two-token prompt and three generated tokens, the cached path processes input lengths `2 + 1 + 1 = 4`. Recomputing from scratch processes `2 + 3 + 4 = 9`. Both should generate the same tokens. The notebook stores IDs as a stand-in for key/value tensors and counts IDs passed to the model. Real attention still reads earlier cache entries. The toy predictor also scans the stored IDs when it computes a score. The counter tracks only new IDs passed into its interface, so it is useful for tracing reuse and cannot estimate elapsed time.
 
 ![Three steps show each model input, its generated token, and the cache after the call. The output enters the cache on the following step.](diagram.png)
+
+## Results to look for
+
+![What the cache saves. Prefill: 2 new IDs. Process the entire prompt; Decode: 1 new ID per call. Feed in the previous output; Three outputs: 4 vs 9 input IDs. Cached versus recomputed.](result-preview.png)
+
+1. Look at the first generated ID and cache separately. The generated ID appears in the cache only after it is fed back.
+2. The generated sequences should match. The input-ID count isolates repeated input processing and leaves out the cost of reading prior state.
 
 ## Lab plan
 

@@ -2,6 +2,8 @@
 
 **Time** 15–20 minutes · **Hardware** CPU · **Software** Python 3 and Jupyter
 
+[Open notebook](lab.ipynb) · [Exercise plan](#lab-plan) · [Results to look for](#results-to-look-for)
+
 Why can the limiting resource change between the prompt and the generated tokens?
 
 In Kiely's comparison, prefill processes many prompt positions together and can reuse model weights across those positions. One decode step processes one new position per active sequence and typically has less weight reuse. Batching decode requests increases reuse, while longer contexts can increase traffic from reading cached keys and values. These are tendencies. Shapes, hardware, and implementation can change the result.
@@ -11,6 +13,13 @@ We use two separate estimates. First, a FP16 projection has ideal intensity `2MK
 ![Projection intensity rises from about 1 to 30 to 171 FLOP per byte across the three scenarios.](diagram.png)
 
 Here, M counts rows processed together by a projection. Those rows can come from one long prompt or from several sequences during decode. The projection estimate assumes one weight read, while the KV estimate counts separate reads for each sequence. Compare them as two sources of work and traffic before reasoning about the whole model.
+
+## Results to look for
+
+![Compare shared weights and cache reads. Decode, batch 1: ≈ 1 FLOP/byte. Little projection weight reuse; Prefill, 256 rows: ≈ 171 FLOP/byte. Many rows share the weights; KV traffic: 8 MiB → 16 MiB. Double context at fixed batch.](result-preview.png)
+
+1. The projection alone crosses the ridge in the higher-reuse case. Keep its conclusion scoped to that operation.
+2. The cache estimate grows with sequences and context independently of the projection estimate. Check that your count includes both K and V.
 
 ## Lab plan
 

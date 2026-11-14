@@ -2,6 +2,8 @@
 
 **Time** 15–20 minutes · **Hardware** CPU · **Software** Python 3 and Jupyter
 
+[Open notebook](lab.ipynb) · [Exercise plan](#lab-plan) · [Results to look for](#results-to-look-for)
+
 ## Concepts you will use
 
 A linear layer computes one weighted sum per output and adds a bias. Think of a sample as a row of measurements. Each column of the weight matrix answers a different question about those same measurements.
@@ -15,6 +17,14 @@ The layer's weights and bias are fixed during inference. You can change the batc
 ReLU computes `max(0, x)` for each hidden value. Composing two affine layers gives another affine map with a constant slope. ReLU can switch a hidden feature on or off as the input crosses zero, which allows different slopes in different regions.
 
 ![A four-by-three input matrix times a three-by-two weight matrix gives four rows of two outputs. The same two biases are added to each row.](diagram.png)
+
+## Results to look for
+
+![From dot product to activation. Single sample: [2, 4] → [3, 8]. One dot product per column; Batch: (4 × 3) → (4 × 2). Keep one output row per sample; ReLU: [−2, 2] → [0, 2]. Zero the negative feature.](result-preview.png)
+
+1. Calculate the first output by hand, then check that all-zero features return the bias vector. This isolates the addition from the multiplication.
+2. Compare the batched result with one call per sample. A shape mismatch suggests the sample and output axes were swapped.
+3. Plot or inspect the output at negative and positive inputs. Which hidden unit contributes on each side of zero?
 
 ## Lab plan
 

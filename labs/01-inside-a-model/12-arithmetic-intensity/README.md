@@ -2,6 +2,8 @@
 
 **Time** 15–20 minutes · **Hardware** CPU · **Software** Python 3 and Jupyter
 
+[Open notebook](lab.ipynb) · [Exercise plan](#lab-plan) · [Results to look for](#results-to-look-for)
+
 Why do two operations on the same GPU hit different ceilings?
 
 The hardware ratio `peak FLOP/s ÷ bandwidth bytes/s` gives a **ridge point** in FLOP per byte. An operation's **arithmetic intensity** is its total FLOP divided by bytes moved across a specified memory boundary. Below the ridge, the bandwidth ceiling is `intensity × bandwidth`. Above it, the compute peak sets the roof. This lab uses an illustrative device with 60 TFLOP/s and 1 TB/s, so the ridge is 60 FLOP/byte. The book uses the same calculation with an H100 example.
@@ -11,6 +13,13 @@ For a matrix product `(M × K) @ (K × N)`, count about `2MKN` FLOP using two pe
 ![Roofline chart rising to 60 TFLOP per second at 60 FLOP per byte, then staying flat.](diagram.png)
 
 Use rates and byte counts for the same memory boundary. For example, compare DRAM traffic with DRAM bandwidth. The roof is an upper bound on throughput. A point below it may reflect overhead or an implementation that does not saturate either resource.
+
+## Results to look for
+
+![Locate the workload on the roofline. Count: FLOP / byte. Include both reads and the write; 16 input rows: 15.5 FLOP/byte. Below the ridge at 60; 128 input rows: 102.4 FLOP/byte. Compute peak caps the roof.](result-preview.png)
+
+1. Use the matrix dimensions to check each traffic term separately. Intensity rises as more input rows share the weight matrix.
+2. Compare the two throughput ceilings in the same units. A modeled ceiling is a bound, so measured throughput can be lower.
 
 ## Lab plan
 

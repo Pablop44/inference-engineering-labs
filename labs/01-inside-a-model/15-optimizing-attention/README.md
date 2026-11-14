@@ -2,6 +2,8 @@
 
 **Time** 15–20 minutes · **Hardware** CPU · **Software** Python 3 and Jupyter
 
+[Open notebook](lab.ipynb) · [Exercise plan](#lab-plan) · [Results to look for](#results-to-look-for)
+
 Why can exact attention use less temporary memory without changing which tokens it can read?
 
 Kiely explains that a straightforward implementation writes the score matrix and the softmax probability matrix, only to read them again in the next operation. **FlashAttention** tiles and fuses the calculation to avoid materializing those full matrices in GPU memory. It still covers the same query–key pairs. **PagedAttention** addresses a different problem by organizing the persistent KV cache into pages. **Sliding-window attention** instead changes which keys each query can see.
@@ -11,6 +13,13 @@ In this lab, the reference keeps scores and probabilities for every causal row. 
 For N causal queries the two reference intermediates together contain N(N+1) scalar entries. With chunks of size B, the streamed loop holds at most B scores at once and keeps an accumulator of value width. These are counts for the intermediates shown here. They exclude inputs, outputs and Python overhead and do not measure GPU traffic or speed.
 
 ![Dense attention stores scores and probabilities. Streamed attention merges each chunk into running state and normalizes after the last chunk.](diagram.png)
+
+## Results to look for
+
+![Separate storage from visibility. Dense: 56 intermediates. Seven causal rows, two matrices; Streamed: 2 chunk scores. Same 28 eligible pairs; Window 3: 18 eligible pairs. Some earlier keys become invisible.](result-preview.png)
+
+1. When the running maximum rises, both the denominator and the weighted numerator must be rescaled. Signed value components help catch one-sided updates.
+2. Compare output rows with the dense oracle at several chunk sizes. Then change the visibility window and explain why equality is no longer expected.
 
 ## Lab plan
 

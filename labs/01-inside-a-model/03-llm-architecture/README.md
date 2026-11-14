@@ -2,6 +2,8 @@
 
 **Time** 15–20 minutes · **Hardware** CPU · **Software** Python 3 and Jupyter
 
+[Open notebook](lab.ipynb) · [Exercise plan](#lab-plan) · [Results to look for](#results-to-look-for)
+
 ## Concepts you will use
 
 A decoder-only language model takes token IDs and produces next-token scores. An **embedding** is a lookup table with one vector per vocabulary entry. Each token gets its own row in the sequence, even when the same ID occurs twice. A position signal gives the model information about where each token appears. The toy position signal simply adds an index to a feature. Implementations such as rotary position embeddings instead inject position information inside attention.
@@ -11,6 +13,13 @@ The transformer stack updates those vectors while preserving the hidden width at
 For two tokens, a hidden width of three, and a vocabulary size of five, the embedding output is `(2, 3)` and the head projection is `(2, 3) @ (3, 5) → (2, 5)`. Taking the final row leaves five candidate scores. The notebook uses deterministic row-wise placeholder blocks so you can focus on these interfaces. Real transformer blocks can mix information across positions through attention.
 
 ![Embedding and position signals produce three rows of width two. Decoder blocks preserve that shape. The vocabulary head produces three rows of width four. The last row predicts the next token.](diagram.png)
+
+## Results to look for
+
+![Trace the tensor contract. Embedding: 3 × 2. Three positions, width two; Vocabulary head: 3 × 4. Four logits per position; Next token: 4 scores. Use the final position.](result-preview.png)
+
+1. Check that a repeated token can get a different position signal. Keep the lookup table unchanged so future lookups remain consistent.
+2. If you add a position, another logits row appears. If you grow the vocabulary, the number of columns changes.
 
 ## Lab plan
 

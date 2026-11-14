@@ -2,6 +2,8 @@
 
 **Time** 15–20 minutes · **Hardware** CPU · **Software** Python 3 and Jupyter
 
+[Open notebook](lab.ipynb) · [Exercise plan](#lab-plan) · [Results to look for](#results-to-look-for)
+
 Why separate text conditioning, denoising, and decoding?
 
 In a text-conditioned latent pipeline, a **text encoder** represents the prompt, a **denoiser** uses that representation while updating a noisy latent grid, and an **image decoder** converts the final latent into pixels. A latent is an internal representation. The image decoder, often the decoder side of a variational autoencoder (VAE), maps that representation back to pixels. Running repeated model evaluations on a smaller spatial grid can reduce work, although actual cost also depends on channels and architecture.
@@ -9,6 +11,13 @@ In a text-conditioned latent pipeline, a **text encoder** represents the prompt,
 The notebook uses a prompt lookup instead of a text encoder, one supplied conditional update, and nearest-neighbor expansion instead of a learned decoder. For example, expanding the row [0.2, 0.8] by a factor of two gives [0.2, 0.2, 0.8, 0.8]. Repeat rows too, so a 2 × 2 latent becomes 4 × 4. Keep the starting latent fixed to isolate the effect of changing the prompt.
 
 ![Two prompts condition the same starting latent. Each two-by-two latent is decoded into a six-by-six image.](diagram.png)
+
+## Results to look for
+
+![One starting latent, two outputs. Control: Same 2 × 2 grid. Hold initialization fixed; Change: Horizontal or vertical. Change prompt conditioning; Result: Two 6 × 6 images. Decode both at the same scale.](result-preview.png)
+
+1. Compare cells that differ between prompt conditions. Both runs should preserve the latent shape.
+2. Expansion makes the grid larger. The pattern difference comes from conditioning before the decoder.
 
 ## Lab plan
 

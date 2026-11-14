@@ -2,6 +2,8 @@
 
 **Time** 15–20 minutes · **Hardware** CPU · **Software** Python 3 and Jupyter
 
+[Open notebook](lab.ipynb) · [Exercise plan](#lab-plan) · [Results to look for](#results-to-look-for)
+
 Why can image generation spend so much time in attention even with a smaller model?
 
 Kiely contrasts repeated denoising over a whole latent grid with single-token LLM decode. In a diffusion transformer, global self-attention can compare every spatial patch token with every other patch token during each denoiser evaluation. At a fixed patch size, doubling both latent axes quadruples token count. Full attention then has sixteen times as many query-key pairs.
@@ -11,6 +13,13 @@ For a 16 × 16 latent with 2 × 2 patches, there are 64 tokens and 4,096 pairs p
 ![Relative attention FLOP for the baseline, doubling both axes, halving steps, and two branches.](diagram.png)
 
 The latency column is a compute floor for the two attention matrix products only. The estimate holds the head layout and number of attention blocks fixed. The 16× result refers to their FLOP count. It does not predict a 16× increase in end-to-end latency.
+
+## Results to look for
+
+![Trace geometry into request cost. Latent axes: 2× height and width. Keep the patch size fixed; Patch tokens: 4× as many. Compare every token pair; Global attention: 16× FLOP. Hold steps and heads fixed.](result-preview.png)
+
+1. Track token count and pair count separately. The square appears when comparing every query with every key.
+2. Account for denoiser branches and steps independently. The resulting compute floor covers the modeled attention products.
 
 ## Lab plan
 

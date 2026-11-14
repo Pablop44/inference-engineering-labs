@@ -2,6 +2,8 @@
 
 **Time** 15–20 minutes · **Hardware** CPU · **Software** Python 3 and Jupyter
 
+[Open notebook](lab.ipynb) · [Exercise plan](#lab-plan) · [Results to look for](#results-to-look-for)
+
 ## Concepts you will use
 
 Attention uses a **query** to ask what information is relevant, a **key** to score how well each source position matches, and a **value** to supply the information to mix. For one query, take its dot product with each key and divide by the square root of the key width. Softmax turns the resulting scores into nonnegative weights that sum to one.
@@ -11,6 +13,13 @@ For query `[1, 0]` and keys `[1, 0]` and `[0, 1]`, the scaled scores are about `
 **Causal** attention means position i can read positions up to and including i. For the first query in the example, masking the second score before softmax gives weights `[1, 0]` and output `[3, 0]`. The notebook holds queries, keys, and values fixed so you can isolate what scoring and masking do. In a model, learned projections produce these vectors. Self-attention projects them from the same sequence. Cross-attention takes queries from one sequence and keys and values from another.
 
 ![A three-by-three causal mask with six visible query-key pairs. Scaled query-key scores are masked before softmax, then used to mix value vectors.](diagram.png)
+
+## Results to look for
+
+![Follow the weight, then the value. Score: [0.707, 0]. Scaled matches for one query; Mask + softmax: [1, 0]. Remove the future key; Value mix: [3, 0]. All weight on the first value.](result-preview.png)
+
+1. Check visibility before interpreting the output. A future key should have zero probability after masking and softmax.
+2. Change the last value and inspect earlier rows. Their exact match is evidence that future values cannot leak into them.
 
 ## Lab plan
 

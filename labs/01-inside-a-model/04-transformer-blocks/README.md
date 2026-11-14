@@ -2,6 +2,8 @@
 
 **Time** 15–20 minutes · **Hardware** CPU · **Software** Python 3 and Jupyter
 
+[Open notebook](lab.ipynb) · [Exercise plan](#lab-plan) · [Results to look for](#results-to-look-for)
+
 ## Concepts you will use
 
 A decoder block has two different jobs. Its attention branch lets earlier positions influence the current one. Its feed-forward branch transforms features within each position. Both branches return the same shape as their input so the block can add their outputs back to the hidden state. These additions are called **residual connections**.
@@ -11,6 +13,13 @@ In a pre-normalized block, the branch sees normalized features while the residua
 The notebook supplies prefix averaging as a stand-in for causal attention and a tiny ReLU feature transform as the feed-forward branch. Turning branches off lets you separate cross-position mixing from within-position transformations. Lab 1.5 replaces the averaging idea with explicit attention scores.
 
 ![The input goes through normalization and attention, and bypasses both via a residual connection. The updated state then does the same for the feed-forward branch.](diagram.png)
+
+## Results to look for
+
+![Find which branch moves information. Attention: Across positions. Earlier rows can affect later rows; Feed-forward: Within a position. Features change independently; Residual: Width stays fixed. Add the update to the state.](result-preview.png)
+
+1. Compare the output shape with the input shape. Each feature must receive the matching branch update.
+2. Change an early row and compare the ablations. Only the attention stand-in can transmit that change to another position.
 
 ## Lab plan
 
