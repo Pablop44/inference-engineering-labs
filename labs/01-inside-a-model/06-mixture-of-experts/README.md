@@ -2,22 +2,34 @@
 
 **Time** 15–20 minutes · **Hardware** CPU · **Software** Python 3 and Jupyter
 
-How can a model have many expert parameters while running only a few experts per token?
+## Concepts you will use
 
-A mixture-of-experts layer can replace the feed-forward branch with several expert networks and a **router** that scores the experts for each token. A top-k router selects a small subset and combines their outputs with routing weights. If many tokens select the same expert, it may have more work than its peers.
+A mixture-of-experts layer has multiple expert networks and a **router** that decides which ones to run for each token. The router produces one score per expert. Top-k routing keeps the k highest scores, normalizes them into weights, and combines the selected expert outputs.
 
-You'll supply the routing and combination logic for three scalar experts, then compare top-1 and top-2 routing on deliberately skewed scores. Inspect the trade-off between expert calls and load balance. The counts are a proxy for work. Real throughput also depends on how tokens are batched and moved between devices.
+Suppose one token gives expert scores `[2, 0, 1]`. Top-1 uses expert 0 with weight 1. Top-2 uses experts 0 and 2 with weights of about `0.73` and `0.27`. If their outputs are 10 and 4, the combined output is about 8.4. Expert 1 is skipped in both runs.
+
+The notebook supplies simple scalar expert functions and fixed router scores. Expert calls measure work in this example. If many tokens select the same expert, its call count can remain high even though most experts are skipped per token. In a distributed model, that imbalance can matter alongside communication and batching.
+
+```text
+token --> router scores --> top-k selection --> normalize selected scores
+   |                                                   |
+   +--> selected expert functions --> weighted outputs-+
+                                             |
+                                          sum outputs
+```
+
+## Lab plan
+
+| Exercise | What you will do | What to look for |
+| --- | --- | --- |
+| 1. Select and weight experts | Sort expert IDs by score, retain the best k, and normalize the selected scores with softmax. | Check the selected IDs, their order, and that the weights sum to one. Top-1 should give the selected expert full weight. |
+| 2. Combine outputs and count calls | Route each token, run only its chosen experts, and accumulate the weighted output and per-expert counts. | Compare total calls and the busiest expert for top-1 and top-2. Also compare both with evaluating every expert for every token. |
+
+Spend about 3–4 minutes on the worked example, 10–13 minutes on the exercises, and the last few minutes explaining the results.
 
 ## Run the lab
 
-Open [lab.ipynb](lab.ipynb) in Jupyter and select a Python 3 kernel. Run the setup, make the predictions, then complete each TODO and run its check. The notebook uses only the standard library and includes all inputs.
-
-| Time | Activity |
-| --- | --- |
-| 3 min | Read the setup and predict the first result. |
-| 6 min | Complete and check the first implementation. |
-| 6 min | Complete the second exercise and inspect the results. |
-| 2–4 min | Explain what changed using the wrap-up questions. |
+Open [lab.ipynb](lab.ipynb) in Jupyter with a Python 3 kernel. Run the setup, replace each `return None` placeholder, and run the check directly below it. The notebook uses only the Python standard library and includes the inputs.
 
 Reading companion for Section 2.2 of *Inference Engineering* by Philip Kiely (Baseten Books).
 
