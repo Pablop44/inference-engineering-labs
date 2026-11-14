@@ -24,7 +24,7 @@ Measure both model execution and client-observed latency when the lab includes a
 
 ## Who this is for
 
-These labs are for developers who know basic Python and have some familiarity with machine learning. ML engineers can use them to investigate model execution. Backend and infrastructure engineers can use them to study queues, concurrency, and the cost of serving models. Familiarity with tensors and HTTP is useful as the labs progress.
+These labs are for software engineers comfortable with Python, debugging, and basic complexity analysis who want to understand inference systems. Familiarity with machine learning helps, and the labs introduce model-specific concepts as they use them. ML engineers can use them to investigate model execution. Backend and infrastructure engineers can use them to study queues, concurrency, and the cost of serving models. Familiarity with tensors and HTTP is useful as the labs progress.
 
 ## What we will build and measure
 

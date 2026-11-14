@@ -21,7 +21,9 @@ Start with [Chapter 0. Introduction to inference engineering](docs/00-introducti
 
 ## What to expect from a lab
 
-The current labs use small models and synthetic inputs so you can trace every step on a CPU. Each lab includes a guide, a worked example, and a notebook with implementation exercises and checks. Treat operation counts and toy errors as measurements of the exercise. Later labs will benchmark real models.
+The labs assume you can read Python, reason about time and space complexity, and debug a function from its failing checks. Prior experience with model internals or GPU programming is optional.
+
+The current labs use small models and synthetic inputs so you can trace every step on a CPU. Each lab includes a guide, a worked example, and a notebook with implementation exercises and checks. Treat operation counts and toy errors as measurements of the exercise. Each lab ends with an optional systems exercise that connects its toy implementation to an inference workload. Later labs will benchmark real models.
 
 ### Run the notebooks locally
 

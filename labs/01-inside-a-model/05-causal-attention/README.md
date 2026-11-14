@@ -27,6 +27,12 @@ Kiely distinguishes self-attention from cross-attention and connects the KV cach
 
 **Optional extension.** Double the prompt length from 4 to 8. Compare how the visible prefill pairs and the pairs for one cached decode query grow.
 
+## Apply it to an inference system
+
+At fixed head width, one cached decode query scores a number of keys proportional to the current context length. For a prompt of P tokens and G decode queries, the total number of pairs across decode is GP + G(G+1)/2. The cache saves recomputing earlier key and value projections, while the context still grows.
+
+**Causality as an output invariant.** Repeat the future-value perturbation with a larger magnitude and verify that earlier causal outputs are still unchanged. Explain why this is a stronger check than verifying only that each probability row sums to one.
+
 ## Run the lab
 
 Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup cell, replace each `return None` with your implementation, and run the check below it. Allow 15–20 minutes for the core exercises. The extension is optional.

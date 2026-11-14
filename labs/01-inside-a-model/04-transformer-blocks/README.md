@@ -27,6 +27,10 @@ The book separates the embedding, repeated blocks, and vocabulary head. Within a
 
 **Optional extension.** Count the weights for the expansion and contraction of a width-4 feed-forward branch with intermediate widths 8 and 16. Explain why the output can still be added to a width-4 residual.
 
+## Apply it to an inference system
+
+**Isolating a bad block output.** Pick one position where the full block and the attention-only run differ. Trace the normalized row and the feed-forward update. Explain where you would insert a shape check or comparison if a fused implementation disagreed with the reference.
+
 ## Run the lab
 
 Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup cell, replace each `return None` with your implementation, and run the check below it. Allow 15–20 minutes for the core exercises. The extension is optional.

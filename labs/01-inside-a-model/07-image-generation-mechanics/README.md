@@ -25,6 +25,10 @@ The oracle loop above uses one prediction per step. The extension below isolates
 
 **Optional extension.** For unconditional direction −0.2 and conditional direction 0.1, predict the result at scales 0, 1, and 2. Change the scale and compare to the original predictions. How many branch evaluations would your four-step loop require with both branches enabled on every step?
 
+## Apply it to an inference system
+
+**Accounting for guidance work.** A trace shows 20 scheduler steps and 20 batched denoiser calls, each containing a conditional and a baseline prediction. Report the step count, call count, and number of prediction branches separately. Which would you pair with measured time to compare another runtime?
+
 ## Run the lab
 
 Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup cell, replace each `return None` with your implementation, and run the check below it. Allow 15–20 minutes for the core exercises. The extension is optional.

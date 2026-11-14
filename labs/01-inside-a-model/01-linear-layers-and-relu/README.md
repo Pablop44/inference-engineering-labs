@@ -32,6 +32,10 @@ Build on Kiely's matrix composition example by tracking the biases too. With row
 
 **Optional extension.** Collapse the scalar layers `3x + 1` and `2h - 4` into one expression. Predict the result at x = −2, 0, and 2, then compare it with the composed network with ReLU in between.
 
+## Apply it to an inference system
+
+**Projection cost from a tensor shape.** An inference trace shows 128 rows entering a 1024 × 4096 projection. Estimate FLOP using two per multiply-accumulate. If the rows are reduced to 32, what happens to the FLOP count and the weight matrix size? See Lab 1.12 to turn those counts into a roofline estimate.
+
 ## Run the lab
 
 Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup cell, replace each `return None` with your implementation, and run the check below it. Allow 15–20 minutes for the core exercises. The extension is optional.

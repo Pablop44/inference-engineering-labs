@@ -19,6 +19,10 @@ A speedup of 1× means the modeled floor stayed the same. Compare the two compon
 | 1. Calculate time floors | Compute the two resource times and identify the larger. | Which workload is limited by which resource? |
 | 2. Change one resource | Try faster compute and faster memory separately. | Which intervention improves the modeled latency? |
 
+## Apply it to an inference system
+
+**When a bottleneck moves.** For workload A, estimate the compute multiplier at which the memory floor first becomes limiting. If a profiler reports a large gap between the model's floor and measured latency, list one source of that gap you could isolate with timing events.
+
 ## Run the lab
 
 Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup, make the predictions, then replace each `return None` placeholder and run its check. The notebook uses only the standard library and includes all inputs.

@@ -19,6 +19,12 @@ Here, M counts rows processed together by a projection. Those rows can come from
 | 1. Compare projection reuse | Vary rows for unbatched decode, batched decode, and prefill. | Which scenarios reach the ridge? |
 | 2. Estimate KV reads | Vary context and batch size with a fixed KV head layout. | How much cache traffic grows independently of the shared weights? |
 
+## Apply it to an inference system
+
+The worked attention example on pp. 64–66 uses N query rows and an N × N score matrix. Those shapes describe a full-sequence calculation. For the one-token cached decode case in this lab, use one query row per query head and keys and values for all visible positions. Keep the book's method of counting work and traffic, and substitute the shapes of the operation you are analyzing.
+
+**Separating shared and per-sequence traffic.** Estimate the KV reads for a batch with context lengths 512 and 1024 by summing the two single-sequence estimates. Compare with a model that reads both sequences up to the longest padded length. State which assumptions a profiler or runtime trace could validate.
+
 ## Run the lab
 
 Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup, make the predictions, then replace each `return None` placeholder and run its check. The notebook uses only the standard library and includes all inputs.

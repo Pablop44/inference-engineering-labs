@@ -25,6 +25,10 @@ The exact jump in this notebook stands in for an ideal prediction. It is compute
 
 **Optional extension.** From input 1.0, compare two teacher steps of size 0.25 with one Euler step of size 0.5. Both reach the same time. Repeat from 0.8. If a student could reproduce each teacher endpoint in one evaluation, what would be saved? How would you check whether the student preserved quality on unseen prompts?
 
+## Apply it to an inference system
+
+**Comparing quality at matched budgets.** Design a comparison of a few-step student with its teacher on held-out prompts. State what stays fixed, which latency statistic you would report across prompts, and what would make the student unacceptable even if it is faster.
+
 ## Run the lab
 
 Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup cell, replace each `return None` with your implementation, and run the check below it. Allow 15–20 minutes for the core exercises. The extension is optional.

@@ -19,6 +19,10 @@ The latency column is a compute floor for the two attention matrix products only
 | 1. Count spatial attention work | Convert a latent grid into patch tokens and FLOP per block. | Compare doubling one axis with doubling both. |
 | 2. Scale to a denoising budget | Multiply by model evaluations and attention blocks. | Compare changing resolution with changing steps or guidance. |
 
+## Apply it to an inference system
+
+**Separating latent geometry from sampling.** Compare doubling just one latent axis with halving the step budget in the same request. Predict the combined attention FLOP multiplier. Explain why the same multiplier need not apply to the decoder or total latency.
+
 ## Run the lab
 
 Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup, make the predictions, then replace each `return None` placeholder and run its check. The notebook uses only the standard library and includes all inputs.

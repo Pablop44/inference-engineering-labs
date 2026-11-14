@@ -19,6 +19,10 @@ Use rates and byte counts for the same memory boundary. For example, compare DRA
 | 1. Count matmul work | Calculate FLOP and modeled memory traffic. | How does reuse change as M grows? |
 | 2. Apply the roofline | Convert intensity into a throughput ceiling. | Where does the ceiling stop rising? |
 
+## Apply it to an inference system
+
+**Precision and the roofline.** Change only the modeled bytes per value and locate the new point on the existing roofline. Then explain what would have to change in the roof itself if the device's peak compute rate differed at the new precision.
+
 ## Run the lab
 
 Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup, make the predictions, then replace each `return None` placeholder and run its check. The notebook uses only the standard library and includes all inputs.

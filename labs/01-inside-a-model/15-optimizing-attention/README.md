@@ -16,8 +16,14 @@ For N causal queries the two reference intermediates together contain N(N+1) sca
 
 | Exercise | What you will do | What to inspect |
 | --- | --- | --- |
-| 1. Merge a chunk | Rebase the existing sums when a higher score appears. | Test a large maximum change and signed, two-component values. |
+| 1. Merge a chunk | Rebase the existing sums when a higher score appears. | Test large absolute scores and a maximum change and signed, two-component values. |
 | 2. Stream causal attention | Process only eligible keys in chunks and normalize once per query. | Match the dense output with different chunk sizes. Then restrict visibility and inspect the change. |
+
+## Apply it to an inference system
+
+At fixed head and value widths, streaming keeps the full causal pair count at O(N²) and reduces the temporary score storage in this implementation. A window of width w permits at most Nw pairs and changes the set of visible keys. To compare GPU kernels, report measured time and DRAM traffic at matching shapes, masks, and precision.
+
+**Validating an optimized attention kernel.** Use the dense implementation as a numerical oracle. Name two inputs besides the seeded case you would use to test an optimized version. Include a case that changes the running maximum across chunks and a case with a partial final chunk. Separately specify what you would measure to support a memory-traffic claim.
 
 ## Run the lab
 

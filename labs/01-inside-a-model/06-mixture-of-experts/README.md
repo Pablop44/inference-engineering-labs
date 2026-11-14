@@ -27,6 +27,10 @@ Kiely distinguishes the experts selected for an individual token from the union 
 
 **Optional extension.** Compare a batch where every token routes to expert 0 with a batch in which different tokens prefer different experts. Keep top-k fixed at one and compare total assignments, distinct active experts, and the busiest expert.
 
+## Apply it to an inference system
+
+**Per-device load instead of average load.** Assume each expert is on a separate device and each call takes one unit of time. Use the per-expert counts to estimate the longest device queue under top-1 and top-2. State what this model leaves out, such as dispatch and expert batching.
+
 ## Run the lab
 
 Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup cell, replace each `return None` with your implementation, and run the check below it. Allow 15–20 minutes for the core exercises. The extension is optional.

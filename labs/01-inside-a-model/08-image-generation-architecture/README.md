@@ -25,6 +25,10 @@ A diffusion transformer can group regions of the latent grid into **patch tokens
 
 **Optional extension.** Compare 4 × 4 and 8 × 8 latent grids using 2 × 2 patches. Count the tokens and the query-key pairs for full attention. Then trace where a refiner would fit between the lab's latent update and decoder. Which shape would it have to return to keep the decoder interface unchanged?
 
+## Apply it to an inference system
+
+**Finding the repeated work in a pipeline.** A trace reports 30 ms for text encoding, 12 ms per denoising step, and 30 ms for decoding. Estimate total time at 20 and 10 steps assuming no overlap and no other work. Where would a refiner factor into the accounting?
+
 ## Run the lab
 
 Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup cell, replace each `return None` with your implementation, and run the check below it. Allow 15–20 minutes for the core exercises. The extension is optional.

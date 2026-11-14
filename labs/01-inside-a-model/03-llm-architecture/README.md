@@ -27,6 +27,10 @@ Kiely uses the model configuration to connect architectural choices to runtime s
 
 **Optional extension.** Change only the vocabulary size in the toy configuration. Predict which matrix shapes change, then vary the number of layers and compare again.
 
+## Apply it to an inference system
+
+**An incompatible model variant.** A runtime supports an architecture with hidden width 2 and a vocabulary of 4. Use the configuration example to compare doubling the vocabulary with doubling the number of blocks. Which tensor contracts and execution counts would you check before reusing a compiled plan?
+
 ## Run the lab
 
 Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup cell, replace each `return None` with your implementation, and run the check below it. Allow 15–20 minutes for the core exercises. The extension is optional.

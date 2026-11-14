@@ -25,6 +25,10 @@ The aligned smoothing experiment demonstrates shared information over time with 
 
 **Optional extension.** Start at position 0 and compare the intended move of one pixel per frame with a framewise predictor that advances by 1.1 pixels. Predict the drift after eight updates. Then double the number of frames at a fixed number of spatial tokens per frame and compare the query-key pair counts.
 
+## Apply it to an inference system
+
+**Measuring the cost of extra frames.** For full attention over a clip, keep spatial token count fixed and double the number of frames. Use the optional extension's pair count to estimate the change in work. Then propose a visual check that would catch oversmoothing of a deliberate flash.
+
 ## Run the lab
 
 Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup cell, replace each `return None` with your implementation, and run the check below it. Allow 15–20 minutes for the core exercises. The extension is optional.

@@ -27,6 +27,10 @@ Kiely breaks generation into formatting and tokenizing the request, running the 
 
 **Optional extension.** Compare greedy selection with sampling restricted to the top two candidates. Predict which IDs remain eligible and explain which selected ID would be fed into the next decode call.
 
+## Apply it to an inference system
+
+**A decode budget that matches the request.** Consider two requests with the same prompt but budgets of 1 and 64 generated tokens. Predict how many times each request enters decode after prefill. Then vary the notebook's step count and explain why counting only input IDs misses the cost of scanning cached state.
+
 ## Run the lab
 
 Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup cell, replace each `return None` with your implementation, and run the check below it. Allow 15–20 minutes for the core exercises. The extension is optional.
