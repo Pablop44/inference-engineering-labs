@@ -1,12 +1,16 @@
 # Inference Engineering Labs
 
-A hands-on project for learning to run, optimize, and serve models. We start with small operations we can inspect in a notebook and work up to deploying an inference service and testing it under load.
+Reproducible labs for running, benchmarking, and serving machine learning models. The roadmap starts with individual model operations and builds toward an inference service tested under load.
 
-The labs are for developers who know Python and have a basic understanding of machine learning. The first labs will run on a CPU. Each exercise will explain how to reproduce it, what to measure, and what hardware it requires.
+## Motivation
 
-## Table of contents
+I started this project while reading *Inference Engineering* by Philip Kiely. I wanted to work through the ideas in code, run experiments, and see how each design choice affects latency, throughput, memory, and output quality. I'm sharing that work so other developers can reproduce the results, compare them on their own hardware, and build on the experiments.
 
-In each module, we ask a question, measure a baseline, and change one variable to see what happens.
+## Who this is for
+
+The labs are for developers who know Python and have a basic understanding of machine learning. The first labs are designed for CPU. Exercises that need a GPU or multiple devices will specify the hardware up front.
+
+## Learning roadmap
 
 | Module | Status |
 | --- | --- |
@@ -19,6 +23,10 @@ In each module, we ask a question, measure a baseline, and change one variable t
 - **Done** — Exercises are available and verified.
 - **WIP** — Exercises are in development.
 - **Coming soon** — Exercises are planned.
+
+## What to expect from a lab
+
+Each lab will center on a question and a runnable experiment in a notebook or Python script. A published lab will include the setup and run commands, the model and hardware used, a baseline, and the metrics to compare. Results will record the conditions that affect them, such as batch size, sequence length, or concurrency, so readers can rerun the experiment and interpret differences.
 
 ## 1. Inside a model
 
@@ -56,11 +64,17 @@ In each module, we ask a question, measure a baseline, and change one variable t
 - Instrument queueing, compute, and response times. Compare a client that waits for the full response with one that consumes tokens as they arrive.
 - Roll out a new version of a local service under load. Check for errors and interrupted requests during the rollout.
 
+## Contributing
+
+If you reproduce a lab and get a different result, open an issue with your hardware, software versions, run command, and measurements. Pull requests are welcome for reproducibility fixes, clearer explanations, and focused experiments that fit the roadmap.
+
 ## Credits and further reading
 
-This project was inspired by *Inference Engineering* by Philip Kiely (Baseten Books). The module sequence follows the experiments in this repository. These sections of the book provide background for the labs.
+Thanks to Philip Kiely for *Inference Engineering* (Baseten Books), the primary reference for these labs. These sections provide background for the experiments.
 
 - **Foundations and metrics** — Chapters 0 and 1 cover inference fundamentals, model selection, latency, and throughput.
 - **Hardware** — Chapter 3 covers GPU architecture, memory hierarchy, accelerator generations, and instance types.
 - **Capacity and infrastructure** — Section 7.3 covers GPU provisioning and capacity across providers.
 - **Glossary and further reading** — Appendices A and B.
+
+I also looked to [Amit Shekhar's LLM Inference Engineering](https://github.com/amitshekhariitbhu/llm-inference-engineering) and [Navaneeth Krishnan Suresh's Inference Engineering From First Principles](https://github.com/navaneethkrishnansuresh/Inference-Engineering) for examples of how to organize a public learning project.
