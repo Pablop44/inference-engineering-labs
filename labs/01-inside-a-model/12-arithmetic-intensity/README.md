@@ -10,6 +10,8 @@ For a matrix product `(M × K) @ (K × N)`, count about `2MKN` FLOP using two pe
 
 ![Roofline chart rising to 60 TFLOP per second at 60 FLOP per byte, then staying flat.](diagram.png)
 
+Use rates and byte counts for the same memory boundary. For example, compare DRAM traffic with DRAM bandwidth. The roof is an upper bound on throughput. A point below it may reflect overhead or an implementation that does not saturate either resource.
+
 ## Lab plan
 
 | Exercise | What you will do | What to inspect |
@@ -19,7 +21,7 @@ For a matrix product `(M × K) @ (K × N)`, count about `2MKN` FLOP using two pe
 
 ## Run the lab
 
-Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup, make the predictions, then complete each TODO and run its check. The notebook uses only the standard library and includes all inputs.
+Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup, make the predictions, then replace each `return None` placeholder and run its check. The notebook uses only the standard library and includes all inputs.
 
 | Time | Activity |
 | --- | --- |

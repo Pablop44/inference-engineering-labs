@@ -10,6 +10,8 @@ We use two separate estimates. First, a FP16 projection has ideal intensity `2MK
 
 ![Projection intensity rises from about 1 to 30 to 171 FLOP per byte across the three scenarios.](diagram.png)
 
+Here, M counts rows processed together by a projection. Those rows can come from one long prompt or from several sequences during decode. The projection estimate assumes one weight read, while the KV estimate counts separate reads for each sequence. Compare them as two sources of work and traffic before reasoning about the whole model.
+
 ## Lab plan
 
 | Exercise | What you will do | What to inspect |
@@ -19,7 +21,7 @@ We use two separate estimates. First, a FP16 projection has ideal intensity `2MK
 
 ## Run the lab
 
-Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup, make the predictions, then complete each TODO and run its check. The notebook uses only the standard library and includes all inputs.
+Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup, make the predictions, then replace each `return None` placeholder and run its check. The notebook uses only the standard library and includes all inputs.
 
 | Time | Activity |
 | --- | --- |

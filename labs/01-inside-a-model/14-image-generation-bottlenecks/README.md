@@ -10,6 +10,8 @@ For a 16 × 16 latent with 2 × 2 patches, there are 64 tokens and 4,096 pairs p
 
 ![Relative attention FLOP for the baseline, doubling both axes, halving steps, and two branches.](diagram.png)
 
+The latency column is a compute floor for the two attention matrix products only. The estimate holds the head layout and number of attention blocks fixed. The 16× result refers to their FLOP count. It does not predict a 16× increase in end-to-end latency.
+
 ## Lab plan
 
 | Exercise | What you will do | What to inspect |
@@ -19,7 +21,7 @@ For a 16 × 16 latent with 2 × 2 patches, there are 64 tokens and 4,096 pairs p
 
 ## Run the lab
 
-Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup, make the predictions, then complete each TODO and run its check. The notebook uses only the standard library and includes all inputs.
+Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup, make the predictions, then replace each `return None` placeholder and run its check. The notebook uses only the standard library and includes all inputs.
 
 | Time | Activity |
 | --- | --- |

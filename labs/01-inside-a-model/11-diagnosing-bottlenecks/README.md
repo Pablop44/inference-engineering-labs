@@ -10,6 +10,8 @@ For 3 GFLOP and 100 MB on a device with 6 TFLOP/s and 200 GB/s, the two floors a
 
 ![Compute and memory time floors in milliseconds for two workloads.](diagram.png)
 
+A speedup of 1× means the modeled floor stayed the same. Compare the two component times again after an upgrade. If they were close to begin with, reducing one can make the other the new bottleneck.
+
 ## Lab plan
 
 | Exercise | What you will do | What to inspect |
@@ -19,7 +21,7 @@ For 3 GFLOP and 100 MB on a device with 6 TFLOP/s and 200 GB/s, the two floors a
 
 ## Run the lab
 
-Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup, make the predictions, then complete each TODO and run its check. The notebook uses only the standard library and includes all inputs.
+Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup, make the predictions, then replace each `return None` placeholder and run its check. The notebook uses only the standard library and includes all inputs.
 
 | Time | Activity |
 | --- | --- |
