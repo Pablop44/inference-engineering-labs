@@ -9,7 +9,7 @@ Start with [Chapter 0. Introduction to inference engineering](docs/00-introducti
 | Module | Status |
 | --- | --- |
 | [0. Introduction to inference engineering](docs/00-introduction.md) | Done |
-| [1. Inside a model](#1-inside-a-model) | Coming soon |
+| [1. Inside a model](#1-inside-a-model) | WIP |
 | [2. Running and benchmarking models](#2-running-and-benchmarking-models) | Coming soon |
 | [3. Optimizing generation](#3-optimizing-generation) | Coming soon |
 | [4. Inference beyond text](#4-inference-beyond-text) | Coming soon |
@@ -25,7 +25,7 @@ Each lab will center on a question and a runnable experiment in a notebook or Py
 
 ## 1. Inside a model
 
-- Implement a linear layer and compare processing one sample at a time with batched matrix multiplication.
+- **Available** · [Lab 1.1. Linear layers, matrix multiplication, and ReLU](labs/01-inside-a-model/01-linear-layers-and-relu/README.md). Build a linear layer, apply it to a batch, and see how an activation changes a two-layer network.
 - Build a small causal attention implementation and observe what changes as sequence length grows.
 - Instrument a small LLM to time prefill and decode separately. Record time to first token, time per output token, and KV cache growth.
 - Compare operations with different arithmetic intensities and relate the measurements to estimates of bytes moved and operations performed.
