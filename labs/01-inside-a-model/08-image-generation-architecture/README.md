@@ -4,11 +4,13 @@
 
 Why separate text conditioning, denoising, and decoding?
 
-In a text-conditioned latent pipeline, a **text encoder** represents the prompt, a **denoiser** uses that representation while updating a noisy latent grid, and an **image decoder** converts the final latent into pixels. A latent is an internal representation. Running repeated model evaluations on a smaller spatial grid can reduce work, although actual cost also depends on channels and architecture.
+In a text-conditioned latent pipeline, a **text encoder** represents the prompt, a **denoiser** uses that representation while updating a noisy latent grid, and an **image decoder** converts the final latent into pixels. A latent is an internal representation. The image decoder, often the decoder side of a variational autoencoder (VAE), maps that representation back to pixels. Running repeated model evaluations on a smaller spatial grid can reduce work, although actual cost also depends on channels and architecture.
 
 The notebook uses a prompt lookup instead of a text encoder, one supplied conditional update, and nearest-neighbor expansion instead of a learned decoder. For example, expanding the row [0.2, 0.8] by a factor of two gives [0.2, 0.2, 0.8, 0.8]. Repeat rows too, so a 2 × 2 latent becomes 4 × 4. Keep the starting latent fixed to isolate the effect of changing the prompt.
 
 ![Two prompts condition the same starting latent. Each two-by-two latent is decoded into a six-by-six image.](diagram.png)
+
+## Lab plan
 
 | Exercise | What you will do | What to inspect |
 | --- | --- | --- |
@@ -25,7 +27,7 @@ A diffusion transformer can group regions of the latent grid into **patch tokens
 
 ## Run the lab
 
-Open [lab.ipynb](lab.ipynb) in Jupyter and select a Python 3 kernel. Run the setup, make the predictions, then complete each TODO and run its check. The notebook uses only the standard library and includes all inputs.
+Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup cell, replace each `return None` with your implementation, and run the check below it. Allow 15–20 minutes for the core exercises. The extension is optional.
 
 | Time | Activity |
 | --- | --- |
@@ -34,6 +36,6 @@ Open [lab.ipynb](lab.ipynb) in Jupyter and select a Python 3 kernel. Run the set
 | 6 min | Complete the second exercise and inspect the results. |
 | 2–4 min | Explain what changed using the wrap-up questions. |
 
-Reading companion for Section 2.3.1, pp. 57–58 of *Inference Engineering* by Philip Kiely (Baseten Books).
+**Reading** · Philip Kiely, *Inference Engineering* (Baseten Books), §2.3.1, pp. 57–58.
 
 [Back to the learning roadmap](../../../README.md#learning-roadmap)

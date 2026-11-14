@@ -4,7 +4,7 @@
 
 ## Concepts you will use
 
-A decoder-only language model takes token IDs and produces next-token scores. An **embedding** is a lookup table with one vector per vocabulary entry. Each token gets its own row in the sequence, even when the same ID occurs twice. A position signal gives the model information about where each token appears.
+A decoder-only language model takes token IDs and produces next-token scores. An **embedding** is a lookup table with one vector per vocabulary entry. Each token gets its own row in the sequence, even when the same ID occurs twice. A position signal gives the model information about where each token appears. The toy position signal simply adds an index to a feature. Implementations such as rotary position embeddings instead inject position information inside attention.
 
 The transformer stack updates those vectors while preserving the hidden width at its boundaries. A final projection, often called the **language model head**, gives each row one score per vocabulary entry. These raw scores are **logits**. During generation, the last row supplies the scores for the next token.
 
@@ -29,7 +29,7 @@ Kiely uses the model configuration to connect architectural choices to runtime s
 
 ## Run the lab
 
-Open [lab.ipynb](lab.ipynb) in Jupyter with a Python 3 kernel. Run the setup, replace each `return None` placeholder, and run the check directly below it. The notebook uses only the Python standard library and includes the inputs.
+Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup cell, replace each `return None` with your implementation, and run the check below it. Allow 15–20 minutes for the core exercises. The extension is optional.
 
 **Reading** · Philip Kiely, *Inference Engineering* (Baseten Books), §§2.2.1–2.2.2, pp. 49–50.
 

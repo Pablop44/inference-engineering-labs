@@ -21,7 +21,20 @@ Start with [Chapter 0. Introduction to inference engineering](docs/00-introducti
 
 ## What to expect from a lab
 
-Each lab will center on a question and a runnable experiment in a notebook or Python script. A published lab will include the setup and run commands, the model and hardware used, a baseline, and the metrics to compare. Results will record the conditions that affect them, such as batch size, sequence length, or concurrency, so readers can rerun the experiment and interpret differences.
+The current labs use small models and synthetic inputs so you can trace every step on a CPU. Each lab includes a guide, a worked example, and a notebook with implementation exercises and checks. Treat operation counts and toy errors as measurements of the exercise. Later labs will benchmark real models.
+
+### Run the notebooks locally
+
+From the repository root, create a virtual environment and launch JupyterLab.
+
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install jupyterlab
+python -m jupyterlab
+```
+
+On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`. Open a lab's `lab.ipynb` and select the Python 3 kernel. The current exercises use the Python standard library. If a check asks you to complete a function, edit and rerun its definition before rerunning the check. Restart the kernel and run all cells in order to verify your finished notebook.
 
 ## 1. Inside a model
 

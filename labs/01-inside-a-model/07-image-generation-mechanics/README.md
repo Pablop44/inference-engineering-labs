@@ -6,9 +6,11 @@ Why does an image generator call its denoiser repeatedly?
 
 A diffusion-style pipeline starts with random values. At each step the model estimates a direction for changing the current sample. A **scheduler** determines the noise levels or timesteps to visit and how to use each prediction to update the sample. The updated sample becomes the next model input. In many pipelines this loop runs on a latent grid, which is decoded into pixels at the end.
 
-We will use a 6 × 6 pixel grid and a supplied **oracle** that knows the target. This makes the update easy to follow. A trained denoiser has to estimate its direction from noisy input and conditioning. In this lab, if the current pixel is 0.8 and the oracle target is 0.2, the direction is −0.6. A step of size 0.5 produces 0.5. Repeating the same rule gives 0.35.
+We will use a 6 × 6 pixel grid and a supplied **oracle** that knows the target. This makes the update easy to follow. A trained denoiser predicts a quantity the scheduler can use, such as noise, velocity, or a clean sample estimate. The oracle returns an update direction directly to isolate the loop. In this lab, if the current pixel is 0.8 and the oracle target is 0.2, the direction is −0.6. A step of size 0.5 produces 0.5. Repeating the same rule gives 0.35.
 
 ![Four pixel grids show seeded noise approaching a bright diamond after one, two, and four updates.](diagram.png)
+
+## Lab plan
 
 | Exercise | What you will do | What to inspect |
 | --- | --- | --- |
@@ -25,7 +27,7 @@ The oracle loop above uses one prediction per step. The extension below isolates
 
 ## Run the lab
 
-Open [lab.ipynb](lab.ipynb) in Jupyter and select a Python 3 kernel. Run the setup, make the predictions, then complete each TODO and run its check. The notebook uses only the standard library and includes all inputs.
+Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup cell, replace each `return None` with your implementation, and run the check below it. Allow 15–20 minutes for the core exercises. The extension is optional.
 
 | Time | Activity |
 | --- | --- |
@@ -34,6 +36,6 @@ Open [lab.ipynb](lab.ipynb) in Jupyter and select a Python 3 kernel. Run the set
 | 6 min | Complete the second exercise and inspect the results. |
 | 2–4 min | Explain what changed using the wrap-up questions. |
 
-Reading companion for Section 2.3, pp. 55–56 of *Inference Engineering* by Philip Kiely (Baseten Books).
+**Reading** · Philip Kiely, *Inference Engineering* (Baseten Books), §2.3, pp. 55–56.
 
 [Back to the learning roadmap](../../../README.md#learning-roadmap)

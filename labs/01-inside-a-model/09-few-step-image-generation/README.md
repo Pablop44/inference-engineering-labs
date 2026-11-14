@@ -6,9 +6,11 @@ What is the cost of using fewer denoising steps, and why might a model be traine
 
 A solver advances the sample along a path described by model predictions. With a simple Euler update, each call estimates the local direction and holds it fixed for one interval. Bigger intervals mean fewer calls. When the direction varies with the sample, a large interval can introduce more error. Few-step models can be trained to make useful progress over larger intervals, for example by learning from the endpoints of a slower teacher trajectory.
 
-This lab uses the scalar equation dx/dt = −x. Its exact evolution over an interval h multiplies the value by exp(−h). Starting at 1, one Euler step of size 0.5 gives 0.5, while the exact value at that time is about 0.607. We provide the exact interval update as an idealized stand-in for a learned jump. The endpoint error measures this equation only. The model-call count is a work proxy.
+This lab uses the scalar equation dx/dt = −x. Its exact evolution over an interval h multiplies the value by exp(−h). Starting at 1, one Euler step of size 0.5 gives 0.5, while the exact value at that time is about 0.607. We provide the exact interval update as an idealized stand-in for a learned jump. The endpoint error measures this equation only. The model-call count is a work proxy. In a real pipeline, a scheduler step can use more than one denoiser evaluation, for example when guidance evaluates two conditioning branches.
 
 ![An Euler timeline has four equal intervals. An idealized jump takes one interval. Both start at time zero and end at time one.](diagram.png)
+
+## Lab plan
 
 | Exercise | What you will do | What to inspect |
 | --- | --- | --- |
@@ -25,7 +27,7 @@ The exact jump in this notebook stands in for an ideal prediction. It is compute
 
 ## Run the lab
 
-Open [lab.ipynb](lab.ipynb) in Jupyter and select a Python 3 kernel. Run the setup, make the predictions, then complete each TODO and run its check. The notebook uses only the standard library and includes all inputs.
+Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup cell, replace each `return None` with your implementation, and run the check below it. Allow 15–20 minutes for the core exercises. The extension is optional.
 
 | Time | Activity |
 | --- | --- |
@@ -34,6 +36,6 @@ Open [lab.ipynb](lab.ipynb) in Jupyter and select a Python 3 kernel. Run the set
 | 6 min | Complete the second exercise and inspect the results. |
 | 2–4 min | Explain what changed using the wrap-up questions. |
 
-Reading companion for Section 2.3.2, p. 59 of *Inference Engineering* by Philip Kiely (Baseten Books).
+**Reading** · Philip Kiely, *Inference Engineering* (Baseten Books), §2.3.2, p. 59.
 
 [Back to the learning roadmap](../../../README.md#learning-roadmap)

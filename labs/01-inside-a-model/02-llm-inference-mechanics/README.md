@@ -8,7 +8,7 @@ A decoder generates text one token at a time. A token is an integer ID represent
 
 **Prefill** processes the entire prompt and gives you the scores used to pick the first generated token. In a real transformer, this pass also saves attention keys and values for the prompt positions in a **KV cache**. **Decode** then processes the latest generated token, reads the cached state, and picks another token. The last generated token has yet to enter the cache until it is fed back in.
 
-For a two-token prompt and three generated tokens, the cached path processes input lengths `2 + 1 + 1 = 4`. Recomputing from scratch processes `2 + 3 + 4 = 9`. Both should generate the same tokens. The notebook stores IDs as a stand-in for key/value tensors and counts IDs passed to the model. Real attention still reads earlier cache entries, so these counts do not predict elapsed time.
+For a two-token prompt and three generated tokens, the cached path processes input lengths `2 + 1 + 1 = 4`. Recomputing from scratch processes `2 + 3 + 4 = 9`. Both should generate the same tokens. The notebook stores IDs as a stand-in for key/value tensors and counts IDs passed to the model. Real attention still reads earlier cache entries. The toy predictor also scans the stored IDs when it computes a score. The counter tracks only new IDs passed into its interface, so it is useful for tracing reuse and cannot estimate elapsed time.
 
 ![Three steps show each model input, its generated token, and the cache after the call. The output enters the cache on the following step.](diagram.png)
 
@@ -29,7 +29,7 @@ Kiely breaks generation into formatting and tokenizing the request, running the 
 
 ## Run the lab
 
-Open [lab.ipynb](lab.ipynb) in Jupyter with a Python 3 kernel. Run the setup, replace each `return None` placeholder, and run the check directly below it. The notebook uses only the Python standard library and includes the inputs.
+Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup cell, replace each `return None` with your implementation, and run the check below it. Allow 15–20 minutes for the core exercises. The extension is optional.
 
 **Reading** · Philip Kiely, *Inference Engineering* (Baseten Books), §2.2, pp. 46–49.
 

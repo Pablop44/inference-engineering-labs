@@ -8,7 +8,7 @@ Attention uses a **query** to ask what information is relevant, a **key** to sco
 
 For query `[1, 0]` and keys `[1, 0]` and `[0, 1]`, the scaled scores are about `[0.707, 0]`. If both keys are visible, the weights are about `[0.67, 0.33]`. With values `[3, 0]` and `[0, 6]`, the weighted output is about `[2.01, 1.98]`.
 
-**Causal** attention means position i can read positions up to and including i. For the first query in the example, masking the second score before softmax gives weights `[1, 0]` and output `[3, 0]`. The notebook holds queries, keys, and values fixed so you can isolate what scoring and masking do.
+**Causal** attention means position i can read positions up to and including i. For the first query in the example, masking the second score before softmax gives weights `[1, 0]` and output `[3, 0]`. The notebook holds queries, keys, and values fixed so you can isolate what scoring and masking do. In a model, learned projections produce these vectors. Self-attention projects them from the same sequence. Cross-attention takes queries from one sequence and keys and values from another.
 
 ![A three-by-three causal mask with six visible query-key pairs. Scaled query-key scores are masked before softmax, then used to mix value vectors.](diagram.png)
 
@@ -29,7 +29,7 @@ Kiely distinguishes self-attention from cross-attention and connects the KV cach
 
 ## Run the lab
 
-Open [lab.ipynb](lab.ipynb) in Jupyter with a Python 3 kernel. Run the setup, replace each `return None` placeholder, and run the check directly below it. The notebook uses only the Python standard library and includes the inputs.
+Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup cell, replace each `return None` with your implementation, and run the check below it. Allow 15–20 minutes for the core exercises. The extension is optional.
 
 **Reading** · Philip Kiely, *Inference Engineering* (Baseten Books), §2.2.3, pp. 52–53.
 

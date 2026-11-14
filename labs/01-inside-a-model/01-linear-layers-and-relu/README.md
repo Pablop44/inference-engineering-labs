@@ -10,6 +10,8 @@ With input `[2, 4]`, weights `[[3, 1], [-1, 2]]`, and bias `[1, -2]`, the first 
 
 A batch stacks samples into rows, so `(batch, input) @ (input, output)` produces `(batch, output)`. The inner dimensions have to match. The outer dimensions tell you how many rows and columns you get. A tensor library can execute this operation with a matrix multiplication kernel. Here we use loops to expose the arithmetic.
 
+The layer's weights and bias are fixed during inference. You can change the batch size without changing either parameter matrix or vector.
+
 ReLU computes `max(0, x)` for each hidden value. Composing two affine layers gives another affine map with a constant slope. ReLU can switch a hidden feature on or off as the input crosses zero, which allows different slopes in different regions.
 
 ![A four-by-three input matrix times a three-by-two weight matrix gives four rows of two outputs. The same two biases are added to each row.](diagram.png)
@@ -32,7 +34,7 @@ Build on Kiely's matrix composition example by tracking the biases too. With row
 
 ## Run the lab
 
-Open [lab.ipynb](lab.ipynb) in Jupyter with a Python 3 kernel. Run the setup, replace each `return None` placeholder, and run the check directly below it. The notebook uses only the Python standard library and includes the inputs.
+Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup cell, replace each `return None` with your implementation, and run the check below it. Allow 15–20 minutes for the core exercises. The extension is optional.
 
 **Reading** · Philip Kiely, *Inference Engineering* (Baseten Books), §§2.1.1–2.1.2, pp. 44–46.
 

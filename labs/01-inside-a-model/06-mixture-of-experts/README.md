@@ -4,7 +4,7 @@
 
 ## Concepts you will use
 
-A mixture-of-experts layer has multiple expert networks and a **router** that decides which ones to run for each token. The router produces one score per expert. Top-k routing keeps the k highest scores, normalizes them into weights, and combines the selected expert outputs.
+A mixture-of-experts layer has multiple expert networks and a **router** that decides which ones to run for each token. The router produces one score per expert. In this lab, top-k routing keeps the k highest scores, normalizes them into weights with softmax, and combines the selected expert outputs. Trained models can use different scoring and normalization rules.
 
 Suppose one token gives expert scores `[2, 0, 1]`. Top-1 uses expert 0 with weight 1. Top-2 uses experts 0 and 2 with weights of about `0.73` and `0.27`. If their outputs are 10 and 4, the combined output is about 8.4. Expert 1 is skipped in both runs.
 
@@ -29,7 +29,7 @@ Kiely distinguishes the experts selected for an individual token from the union 
 
 ## Run the lab
 
-Open [lab.ipynb](lab.ipynb) in Jupyter with a Python 3 kernel. Run the setup, replace each `return None` placeholder, and run the check directly below it. The notebook uses only the Python standard library and includes the inputs.
+Follow the [local setup](../../../README.md#run-the-notebooks-locally), then open [lab.ipynb](lab.ipynb). Run the setup cell, replace each `return None` with your implementation, and run the check below it. Allow 15–20 minutes for the core exercises. The extension is optional.
 
 **Reading** · Philip Kiely, *Inference Engineering* (Baseten Books), §2.2.4, pp. 53–54.
 
