@@ -8,13 +8,14 @@ Start with [Chapter 0. Introduction to inference engineering](docs/00-introducti
 
 | Module | Status |
 | --- | --- |
+| [0. Introduction to inference engineering](docs/00-introduction.md) | Done |
 | [1. Inside a model](#1-inside-a-model) | Coming soon |
 | [2. Running and benchmarking models](#2-running-and-benchmarking-models) | Coming soon |
 | [3. Optimizing generation](#3-optimizing-generation) | Coming soon |
 | [4. Inference beyond text](#4-inference-beyond-text) | Coming soon |
 | [5. Operating an inference service](#5-operating-an-inference-service) | Coming soon |
 
-- **Done** — Exercises are available and verified.
+- **Done** — The chapter or exercises are published and verified.
 - **WIP** — Exercises are in development.
 - **Coming soon** — Exercises are planned.
 
