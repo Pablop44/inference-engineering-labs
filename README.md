@@ -31,6 +31,10 @@ Each lab will center on a question and a runnable experiment in a notebook or Py
 - **Available** · [Lab 1.4. Transformer blocks](labs/01-inside-a-model/04-transformer-blocks/README.md)
 - **Available** · [Lab 1.5. Causal attention](labs/01-inside-a-model/05-causal-attention/README.md)
 - **Available** · [Lab 1.6. Mixture of experts](labs/01-inside-a-model/06-mixture-of-experts/README.md)
+- **Available** · [Lab 1.7. Image generation inference mechanics](labs/01-inside-a-model/07-image-generation-mechanics/README.md)
+- **Available** · [Lab 1.8. Image generation model architecture](labs/01-inside-a-model/08-image-generation-architecture/README.md)
+- **Available** · [Lab 1.9. Few-step image generation](labs/01-inside-a-model/09-few-step-image-generation/README.md)
+- **Available** · [Lab 1.10. Video generation inference](labs/01-inside-a-model/10-video-generation/README.md)
 - **Planned** · Profile prefill and decode on a real model and measure KV cache growth.
 - Compare operations with different arithmetic intensities and relate the measurements to estimates of bytes moved and operations performed.
 
