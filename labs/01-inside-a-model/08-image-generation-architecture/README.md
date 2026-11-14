@@ -15,6 +15,14 @@ The notebook uses a prompt lookup instead of a text encoder, one supplied condit
 | 1. Connect conditioning | Look up the prompt and pass it to one latent update. | The latent shape stays fixed while its values change. |
 | 2. Decode to pixels | Expand each latent cell and compare two prompts. | The output shape grows and the prompt changes the pattern. |
 
+## Patches and a refinement stage
+
+The book uses **SDXL** to illustrate how a pipeline can have a base denoiser and a refiner before the VAE decodes the result. The base establishes the image, while the refiner can improve details. Its comparison with Qwen Image also shows why replacing one pipeline component, such as the text encoder, can change the cost of serving the model.
+
+A diffusion transformer can group regions of the latent grid into **patch tokens**, so attention operates over a sequence of patches. Our prompt lookup and grid expansion model the component interfaces. They approximate neither the learned VAE nor the denoiser's internal attention. The exercise below uses non-overlapping patches and a single full attention operation to isolate how token count grows with grid resolution.
+
+**Optional extension.** Compare 4 × 4 and 8 × 8 latent grids using 2 × 2 patches. Count the tokens and the query-key pairs for full attention. Then trace where a refiner would fit between the lab's latent update and decoder. Which shape would it have to return to keep the decoder interface unchanged?
+
 ## Run the lab
 
 Open [lab.ipynb](lab.ipynb) in Jupyter and select a Python 3 kernel. Run the setup, make the predictions, then complete each TODO and run its check. The notebook uses only the standard library and includes all inputs.
@@ -26,6 +34,6 @@ Open [lab.ipynb](lab.ipynb) in Jupyter and select a Python 3 kernel. Run the set
 | 6 min | Complete the second exercise and inspect the results. |
 | 2–4 min | Explain what changed using the wrap-up questions. |
 
-Reading companion for Section 2.3 of *Inference Engineering* by Philip Kiely (Baseten Books).
+Reading companion for Section 2.3.1, pp. 57–58 of *Inference Engineering* by Philip Kiely (Baseten Books).
 
 [Back to the learning roadmap](../../../README.md#learning-roadmap)

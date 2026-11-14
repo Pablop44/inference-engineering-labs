@@ -15,6 +15,14 @@ This lab uses the scalar equation dx/dt = −x. Its exact evolution over an inte
 | 1. Compare step budgets | Integrate to the same end time with different Euler budgets. | Record endpoint error and calls. |
 | 2. Compare update rules | Swap in the supplied interval update at the same budgets. | Separate the effect of the step count from the effect of the update rule. |
 
+## What the training changes
+
+Kiely discusses two ways to design a generator for a small number of evaluations. **Latent consistency** trains predictions made at different points along a denoising trajectory to agree on the destination. A few evaluations can progressively improve the result. **Distillation** trains a student using a teacher, for example by learning an update that covers multiple smaller teacher steps. Choosing a smaller step budget for an unchanged model leaves its learned predictions unchanged.
+
+The exact jump in this notebook stands in for an ideal prediction. It is computed analytically. The extension constructs a fixed two-step teacher target to show what a student could learn from, then compares that target with a single large Euler step.
+
+**Optional extension.** From input 1.0, compare two teacher steps of size 0.25 with one Euler step of size 0.5. Both reach the same time. Repeat from 0.8. If a student could reproduce each teacher endpoint in one evaluation, what would be saved? How would you check whether the student preserved quality on unseen prompts?
+
 ## Run the lab
 
 Open [lab.ipynb](lab.ipynb) in Jupyter and select a Python 3 kernel. Run the setup, make the predictions, then complete each TODO and run its check. The notebook uses only the standard library and includes all inputs.
@@ -26,6 +34,6 @@ Open [lab.ipynb](lab.ipynb) in Jupyter and select a Python 3 kernel. Run the set
 | 6 min | Complete the second exercise and inspect the results. |
 | 2–4 min | Explain what changed using the wrap-up questions. |
 
-Reading companion for Section 2.3 of *Inference Engineering* by Philip Kiely (Baseten Books).
+Reading companion for Section 2.3.2, p. 59 of *Inference Engineering* by Philip Kiely (Baseten Books).
 
 [Back to the learning roadmap](../../../README.md#learning-roadmap)

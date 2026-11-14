@@ -15,6 +15,14 @@ We will use a 6 × 6 pixel grid and a supplied **oracle** that knows the target.
 | 1. Update a grid | Apply one predicted direction with two step sizes. | Compare the same pixel before and after the update. |
 | 2. Run the loop | Feed each updated grid into the next prediction. | Inspect the snapshots, error, and number of model calls. |
 
+## Guidance and model evaluations
+
+Kiely contrasts the full-grid update of image denoising with the token-by-token loop in the LLM labs. He also describes **classifier-free guidance**, where a denoising step can evaluate both a conditional and an unconditional prediction. With the convention used here, the guided direction is `unconditional + scale × (conditional − unconditional)`. At scale 0 it equals the unconditional direction, and at scale 1 it equals the conditional direction. A runtime may batch both predictions into one call, so count prediction branches separately from Python calls or elapsed time. A negative prompt can supply the baseline conditioning in pipelines that support it.
+
+The oracle loop above uses one prediction per step. The extension below isolates guidance at a single cell and accounts for the extra branch.
+
+**Optional extension.** For unconditional direction −0.2 and conditional direction 0.1, predict the result at scales 0, 1, and 2. Change the scale and compare to the original predictions. How many branch evaluations would your four-step loop require with both branches enabled on every step?
+
 ## Run the lab
 
 Open [lab.ipynb](lab.ipynb) in Jupyter and select a Python 3 kernel. Run the setup, make the predictions, then complete each TODO and run its check. The notebook uses only the standard library and includes all inputs.
@@ -26,6 +34,6 @@ Open [lab.ipynb](lab.ipynb) in Jupyter and select a Python 3 kernel. Run the set
 | 6 min | Complete the second exercise and inspect the results. |
 | 2–4 min | Explain what changed using the wrap-up questions. |
 
-Reading companion for Section 2.3 of *Inference Engineering* by Philip Kiely (Baseten Books).
+Reading companion for Section 2.3, pp. 55–56 of *Inference Engineering* by Philip Kiely (Baseten Books).
 
 [Back to the learning roadmap](../../../README.md#learning-roadmap)
