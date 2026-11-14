@@ -53,6 +53,7 @@ On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`. Open a lab's 
 - **Available** · [Lab 1.12. Arithmetic intensity and the roofline](labs/01-inside-a-model/12-arithmetic-intensity/README.md)
 - **Available** · [Lab 1.13. LLM prefill and decode bottlenecks](labs/01-inside-a-model/13-llm-inference-bottlenecks/README.md)
 - **Available** · [Lab 1.14. Image generation inference bottlenecks](labs/01-inside-a-model/14-image-generation-bottlenecks/README.md)
+- **Available** · [Lab 1.15. Optimizing attention](labs/01-inside-a-model/15-optimizing-attention/README.md)
 
 ## 2. Running and benchmarking models
 
