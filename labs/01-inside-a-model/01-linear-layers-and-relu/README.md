@@ -12,15 +12,7 @@ A batch stacks samples into rows, so `(batch, input) @ (input, output)` produces
 
 ReLU computes `max(0, x)` for each hidden value. Composing two affine layers gives another affine map with a constant slope. ReLU can switch a hidden feature on or off as the input crosses zero, which allows different slopes in different regions.
 
-```text
-X (4 samples × 3 features)   W (3 features × 2 outputs)
-                 \              /
-                  matrix multiply
-                         |
-                 add b to each row
-                         |
-                  Y (4 samples × 2 outputs)
-```
+![A four-by-three input matrix times a three-by-two weight matrix gives four rows of two outputs. The same two biases are added to each row.](diagram.png)
 
 ## Lab plan
 

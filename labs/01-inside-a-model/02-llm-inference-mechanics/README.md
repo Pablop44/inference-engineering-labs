@@ -10,11 +10,7 @@ A decoder generates text one token at a time. A token is an integer ID represent
 
 For a two-token prompt and three generated tokens, the cached path processes input lengths `2 + 1 + 1 = 4`. Recomputing from scratch processes `2 + 3 + 4 = 9`. Both should generate the same tokens. The notebook stores IDs as a stand-in for key/value tensors and counts IDs passed to the model. Real attention still reads earlier cache entries, so these counts do not predict elapsed time.
 
-```text
-Prompt [p0, p1] -- prefill --> choose g0   cache [p0, p1]
-                   g0 -- decode --> choose g1   cache [p0, p1, g0]
-                   g1 -- decode --> choose g2   cache [p0, p1, g0, g1]
-```
+![Three steps show each model input, its generated token, and the cache after the call. The output enters the cache on the following step.](diagram.png)
 
 ## Lab plan
 

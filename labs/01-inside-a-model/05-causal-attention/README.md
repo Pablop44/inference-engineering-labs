@@ -10,17 +10,7 @@ For query `[1, 0]` and keys `[1, 0]` and `[0, 1]`, the scaled scores are about `
 
 **Causal** attention means position i can read positions up to and including i. For the first query in the example, masking the second score before softmax gives weights `[1, 0]` and output `[3, 0]`. The notebook holds queries, keys, and values fixed so you can isolate what scoring and masking do.
 
-```text
-             key position
-             0   1   2
-query 0      ✓   ×   ×
-query 1      ✓   ✓   ×
-query 2      ✓   ✓   ✓
-
-query + keys --> scaled scores --> mask --> softmax weights
-                                                   |
-                                             mix value rows
-```
+![A three-by-three causal mask with six visible query-key pairs. Scaled query-key scores are masked before softmax, then used to mix value vectors.](diagram.png)
 
 ## Lab plan
 

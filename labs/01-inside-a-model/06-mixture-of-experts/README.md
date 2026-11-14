@@ -10,13 +10,7 @@ Suppose one token gives expert scores `[2, 0, 1]`. Top-1 uses expert 0 with weig
 
 The notebook supplies simple scalar expert functions and fixed router scores. Expert calls measure work in this example. If many tokens select the same expert, its call count can remain high even though most experts are skipped per token. In a distributed model, that imbalance can matter alongside communication and batching.
 
-```text
-token --> router scores --> top-k selection --> normalize selected scores
-   |                                                   |
-   +--> selected expert functions --> weighted outputs-+
-                                             |
-                                          sum outputs
-```
+![For scores 2, 0, and 1, top-2 routing selects experts 0 and 2. Their outputs 10 and 4 are combined with weights 0.73 and 0.27. Expert 1 is skipped.](diagram.png)
 
 ## Lab plan
 

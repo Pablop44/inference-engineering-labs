@@ -10,19 +10,7 @@ The transformer stack updates those vectors while preserving the hidden width at
 
 For two tokens, a hidden width of three, and a vocabulary size of five, the embedding output is `(2, 3)` and the head projection is `(2, 3) @ (3, 5) → (2, 5)`. Taking the final row leaves five candidate scores. The notebook uses deterministic row-wise placeholder blocks so you can focus on these interfaces. Real transformer blocks can mix information across positions through attention.
 
-```text
-[token IDs] --> embedding lookup + position signal
-                            |
-                   [sequence × hidden width]
-                            |
-                       decoder blocks
-                            |
-                       vocabulary head
-                            |
-                   [sequence × vocabulary]
-                            |
-                 last row --> next token scores
-```
+![Embedding and position signals produce three rows of width two. Decoder blocks preserve that shape. The vocabulary head produces three rows of width four. The last row predicts the next token.](diagram.png)
 
 ## Lab plan
 

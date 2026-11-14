@@ -10,17 +10,7 @@ In a pre-normalized block, the branch sees normalized features while the residua
 
 The notebook supplies prefix averaging as a stand-in for causal attention and a tiny ReLU feature transform as the feed-forward branch. Turning branches off lets you separate cross-position mixing from within-position transformations. Lab 1.5 replaces the averaging idea with explicit attention scores.
 
-```text
-x --------------------------+
- \                          |
-  normalize --> prefix mix  |
-                    \       /
-                     add --> u --------------------+
-                              \                     |
-                               normalize --> FFN   |
-                                              \    /
-                                               add --> y
-```
+![The input goes through normalization and attention, and bypasses both via a residual connection. The updated state then does the same for the feed-forward branch.](diagram.png)
 
 ## Lab plan
 
