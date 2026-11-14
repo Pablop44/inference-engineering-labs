@@ -6,9 +6,9 @@ A linear layer turns input features into output features. This lab uses a model 
 
 ## Before you open the notebook
 
-A single output is a dot product plus a bias. Multiply each input feature by its corresponding weight, add the products, then add the bias. The notebook stores the weights as `W` with shape `(2, 3)`. Each row contains the three weights for one output. The batch calculation uses `W.T`, which has shape `(3, 2)`. There is one bias value per output, so `b` has shape `(2,)`.
+A single output is a dot product plus a bias. Multiply each input feature by its corresponding weight, add the products, then add the bias. The notebook stores the weights as `W` with shape `(3, 2)`. Each row corresponds to one input feature, and each column contains the three weights for one output. The bias vector `b` contains one value per output.
 
-For a batch of four samples, the input matrix `X` has shape `(4, 3)`. The calculation `X @ W.T + b` produces shape `(4, 2)`, adding the same bias to every sample. A tensor library can hand this work to a matrix multiplication kernel. The lab uses Python loops so you can inspect the calculation. It focuses on shapes and correctness.
+For a batch of four samples, the input matrix `X` has shape `(4, 3)`. The calculation `X @ W + b` produces shape `(4, 2)`, adding the same bias to every sample. A tensor library can hand this work to a matrix multiplication kernel. The lab uses Python loops so you can inspect the calculation. It focuses on shapes and correctness.
 
 ReLU turns negative values into zero and leaves positive values alone. Two affine layers in sequence can be collapsed into one affine map. Adding ReLU between them lets the slope of the output change with the input. You'll see that change directly in a tiny network.
 
