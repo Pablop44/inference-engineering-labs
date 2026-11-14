@@ -76,5 +76,3 @@ Thanks to Philip Kiely for *Inference Engineering* (Baseten Books), the primary 
 - **Hardware** — Chapter 3 covers GPU architecture, memory hierarchy, accelerator generations, and instance types.
 - **Capacity and infrastructure** — Section 7.3 covers GPU provisioning and capacity across providers.
 - **Glossary and further reading** — Appendices A and B.
-
-I also looked to [Amit Shekhar's LLM Inference Engineering](https://github.com/amitshekhariitbhu/llm-inference-engineering) and [Navaneeth Krishnan Suresh's Inference Engineering From First Principles](https://github.com/navaneethkrishnansuresh/Inference-Engineering) for examples of how to organize a public learning project.
