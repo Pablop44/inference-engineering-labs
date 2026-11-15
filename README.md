@@ -4,7 +4,7 @@
 
 Implement causal attention, trace a token through prefill and decode, and use a roofline model to decide whether more compute or more memory bandwidth would help. The roadmap builds toward benchmarking and operating a serving stack.
 
-[Start with the first lab](01-inside-a-model/neural-network-building-blocks/01-linear-layers-and-relu/README.md) · [Explore the roadmap](#learning-roadmap) · [Run the notebooks](#run-the-notebooks-locally)
+[Start with the first lab](01-inside-a-model/01-neural-network-building-blocks/01-linear-layers-and-relu/README.md) · [Explore the roadmap](#learning-roadmap) · [Run the notebooks](#run-the-notebooks-locally)
 
 **15 runnable labs** · **15–20 minutes each** · **Python standard library** · **CPU**
 
@@ -14,9 +14,9 @@ Implement causal attention, trace a token through prefill and decode, and use a 
 
 | If you want to… | Start here |
 | --- | --- |
-| Understand what happens between a prompt and the next token | [LLM inference mechanics](01-inside-a-model/llm-inference-and-architecture/02-llm-inference-mechanics/README.md) |
-| Diagnose why an operation is slow | [Arithmetic intensity and the roofline](01-inside-a-model/inference-bottlenecks/12-arithmetic-intensity/README.md) |
-| See how a kernel can use less temporary memory | [Optimizing attention](01-inside-a-model/memory-efficient-attention/15-optimizing-attention/README.md) |
+| Understand what happens between a prompt and the next token | [LLM inference mechanics](01-inside-a-model/02-llm-inference-and-architecture/02-llm-inference-mechanics/README.md) |
+| Diagnose why an operation is slow | [Arithmetic intensity and the roofline](01-inside-a-model/04-inference-bottlenecks/12-arithmetic-intensity/README.md) |
+| See how a kernel can use less temporary memory | [Optimizing attention](01-inside-a-model/05-memory-efficient-attention/15-optimizing-attention/README.md) |
 
 I started this project while reading Philip Kiely's *Inference Engineering* to turn the concepts into runnable experiments and share them with other engineers. The [introduction](00-introduction/README.md) explains the scope, intended audience, and requirements.
 
