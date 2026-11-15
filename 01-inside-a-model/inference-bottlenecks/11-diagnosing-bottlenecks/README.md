@@ -10,13 +10,13 @@ Kiely starts with two resources. **Compute throughput** tells you how many float
 
 For 3 GFLOP and 100 MB on a device with 6 TFLOP/s and 200 GB/s, the two floors are both 0.5 ms. Doubling only compute leaves the movement floor at 0.5 ms. The point of the calculation is to rule in promising optimizations before measuring them.
 
-![Compute and memory time floors in milliseconds for two workloads.](diagram.png)
+![Compute and memory time floors in milliseconds for two workloads.](../../../assets/01-inside-a-model/11-diagnosing-bottlenecks/diagram.png)
 
 A speedup of 1× means the modeled floor stayed the same. Compare the two component times again after an upgrade. If they were close to begin with, reducing one can make the other the new bottleneck.
 
 ## Results to look for
 
-![Compare time floors in milliseconds. Workload A: 2.00 vs 0.25. Compute floor is larger; Workload B: 0.25 vs 1.50. Memory floor is larger; Upgrade: Recompute both. A different floor can dominate.](result-preview.png)
+![Compare time floors in milliseconds. Workload A: 2.00 vs 0.25. Compute floor is larger; Workload B: 0.25 vs 1.50. Memory floor is larger; Upgrade: Recompute both. A different floor can dominate.](../../../assets/01-inside-a-model/11-diagnosing-bottlenecks/result-preview.png)
 
 1. Compute both times in seconds, then convert for display. Compare the larger value separately for each workload.
 2. A gain applies to the modeled floor. Check where the two floors cross before extrapolating the speedup.

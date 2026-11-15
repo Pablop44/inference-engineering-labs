@@ -10,13 +10,13 @@ In Kiely's comparison, prefill processes many prompt positions together and can 
 
 We use two separate estimates. First, a FP16 projection has ideal intensity `2MKN / [2(MK + KN + MN)]` for M rows. For K=N=1024, M=1 gives about 1 FLOP/byte and M=256 about 171 FLOP/byte. Second, a cached attention step reads K and V for earlier tokens. With 4 key/value positions, 2 KV heads, a head width of 8, and 2 bytes per value, that is `2 × 4 × 2 × 8 × 2 = 256` bytes per layer per sequence. The factor of two counts the K and V arrays. A single cached query uses one row of scores per query head. A full multi-query attention calculation has more than one row.
 
-![Projection intensity rises from about 1 to 30 to 171 FLOP per byte across the three scenarios.](diagram.png)
+![Projection intensity rises from about 1 to 30 to 171 FLOP per byte across the three scenarios.](../../../assets/01-inside-a-model/13-llm-inference-bottlenecks/diagram.png)
 
 Here, M counts rows processed together by a projection. Those rows can come from one long prompt or from several sequences during decode. The projection estimate assumes one weight read, while the KV estimate counts separate reads for each sequence. Compare them as two sources of work and traffic before reasoning about the whole model.
 
 ## Results to look for
 
-![Compare shared weights and cache reads. Decode, batch 1: ≈ 1 FLOP/byte. Little projection weight reuse; Prefill, 256 rows: ≈ 171 FLOP/byte. Many rows share the weights; KV traffic: 8 MiB → 16 MiB. Double context at fixed batch.](result-preview.png)
+![Compare shared weights and cache reads. Decode, batch 1: ≈ 1 FLOP/byte. Little projection weight reuse; Prefill, 256 rows: ≈ 171 FLOP/byte. Many rows share the weights; KV traffic: 8 MiB → 16 MiB. Double context at fixed batch.](../../../assets/01-inside-a-model/13-llm-inference-bottlenecks/result-preview.png)
 
 1. The projection alone crosses the ridge in the higher-reuse case. Keep its conclusion scoped to that operation.
 2. The cache estimate grows with sequences and context independently of the projection estimate. Check that your count includes both K and V.

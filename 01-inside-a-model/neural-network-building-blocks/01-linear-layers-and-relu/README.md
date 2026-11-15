@@ -16,11 +16,11 @@ The layer's weights and bias are fixed during inference. You can change the batc
 
 ReLU computes `max(0, x)` for each hidden value. Composing two affine layers gives another affine map with a constant slope. ReLU can switch a hidden feature on or off as the input crosses zero, which allows different slopes in different regions.
 
-![A four-by-three input matrix times a three-by-two weight matrix gives four rows of two outputs. The same two biases are added to each row.](diagram.png)
+![A four-by-three input matrix times a three-by-two weight matrix gives four rows of two outputs. The same two biases are added to each row.](../../../assets/01-inside-a-model/01-linear-layers-and-relu/diagram.png)
 
 ## Results to look for
 
-![From dot product to activation. Single sample: [2, 4] → [3, 8]. One dot product per column; Batch: (4 × 3) → (4 × 2). Keep one output row per sample; ReLU: [−2, 2] → [0, 2]. Zero the negative feature.](result-preview.png)
+![From dot product to activation. Single sample: [2, 4] → [3, 8]. One dot product per column; Batch: (4 × 3) → (4 × 2). Keep one output row per sample; ReLU: [−2, 2] → [0, 2]. Zero the negative feature.](../../../assets/01-inside-a-model/01-linear-layers-and-relu/result-preview.png)
 
 1. Calculate the first output by hand, then check that all-zero features return the bias vector. This isolates the addition from the multiplication.
 2. Compare the batched result with one call per sample. A shape mismatch suggests the sample and output axes were swapped.

@@ -12,11 +12,11 @@ In a pre-normalized block, the branch sees normalized features while the residua
 
 The notebook supplies prefix averaging as a stand-in for causal attention and a tiny ReLU feature transform as the feed-forward branch. Turning branches off lets you separate cross-position mixing from within-position transformations. Lab 1.5 replaces the averaging idea with explicit attention scores.
 
-![The input goes through normalization and attention, and bypasses both via a residual connection. The updated state then does the same for the feed-forward branch.](diagram.png)
+![The input goes through normalization and attention, and bypasses both via a residual connection. The updated state then does the same for the feed-forward branch.](../../../assets/01-inside-a-model/04-transformer-blocks/diagram.png)
 
 ## Results to look for
 
-![Find which branch moves information. Attention: Across positions. Earlier rows can affect later rows; Feed-forward: Within a position. Features change independently; Residual: Width stays fixed. Add the update to the state.](result-preview.png)
+![Find which branch moves information. Attention: Across positions. Earlier rows can affect later rows; Feed-forward: Within a position. Features change independently; Residual: Width stays fixed. Add the update to the state.](../../../assets/01-inside-a-model/04-transformer-blocks/result-preview.png)
 
 1. Compare the output shape with the input shape. Each feature must receive the matching branch update.
 2. Change an early row and compare the ablations. Only the attention stand-in can transmit that change to another position.

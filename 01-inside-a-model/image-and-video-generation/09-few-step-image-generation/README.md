@@ -10,11 +10,11 @@ A solver advances the sample along a path described by model predictions. With a
 
 This lab uses the scalar equation dx/dt = −x. Its exact evolution over an interval h multiplies the value by exp(−h). Starting at 1, one Euler step of size 0.5 gives 0.5, while the exact value at that time is about 0.607. We provide the exact interval update as an idealized stand-in for a learned jump. The endpoint error measures this equation only. The model-call count is a work proxy. In a real pipeline, a scheduler step can use more than one denoiser evaluation, for example when guidance evaluates two conditioning branches.
 
-![An Euler timeline has four equal intervals. An idealized jump takes one interval. Both start at time zero and end at time one.](diagram.png)
+![An Euler timeline has four equal intervals. An idealized jump takes one interval. Both start at time zero and end at time one.](../../../assets/01-inside-a-model/09-few-step-image-generation/diagram.png)
 
 ## Results to look for
 
-![Hold the endpoint fixed. One Euler call: 0.368 error. One large local step; Four Euler calls: 0.051 error. Refresh the local direction; Idealized jump: ≈ 0 error. Exact rule for this equation.](result-preview.png)
+![Hold the endpoint fixed. One Euler call: 0.368 error. One large local step; Four Euler calls: 0.051 error. Refresh the local direction; Idealized jump: ≈ 0 error. Exact rule for this equation.](../../../assets/01-inside-a-model/09-few-step-image-generation/result-preview.png)
 
 1. Keep total integration time fixed. Increase the number of updates and inspect the endpoint error.
 2. Compare methods within the same budget row. The exact scalar update illustrates a target for larger jumps, with no image-quality claim.

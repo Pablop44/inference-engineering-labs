@@ -10,11 +10,11 @@ A diffusion-style pipeline starts with random values. At each step the model est
 
 We will use a 6 × 6 pixel grid and a supplied **oracle** that knows the target. This makes the update easy to follow. A trained denoiser predicts a quantity the scheduler can use, such as noise, velocity, or a clean sample estimate. The oracle returns an update direction directly to isolate the loop. In this lab, if the current pixel is 0.8 and the oracle target is 0.2, the direction is −0.6. A step of size 0.5 produces 0.5. Repeating the same rule gives 0.35.
 
-![Four pixel grids show seeded noise approaching a bright diamond after one, two, and four updates.](diagram.png)
+![Four pixel grids show seeded noise approaching a bright diamond after one, two, and four updates.](../../../assets/01-inside-a-model/07-image-generation-mechanics/diagram.png)
 
 ## Results to look for
 
-![Read the trajectory across steps. Seeded grid: 0.397 error. Before the first prediction; Two updates: 0.099 error. Feed back the updated grid; Four updates: 0.025 error. One oracle call per update.](result-preview.png)
+![Read the trajectory across steps. Seeded grid: 0.397 error. Before the first prediction; Two updates: 0.099 error. Feed back the updated grid; Four updates: 0.025 error. One oracle call per update.](../../../assets/01-inside-a-model/07-image-generation-mechanics/result-preview.png)
 
 1. Keep the starting grid fixed when comparing step sizes. The one-step example changes only the size of the update.
 2. Check the saved grids in order. If early snapshots look like the final grid, check whether the updates reuse mutable row lists.

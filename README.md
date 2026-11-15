@@ -8,7 +8,7 @@ Implement causal attention, trace a token through prefill and decode, and use a 
 
 **15 runnable labs** · **15–20 minutes each** · **Python standard library** · **CPU**
 
-![A roofline chart illustrating how memory bandwidth and peak compute limit throughput.](01-inside-a-model/inference-bottlenecks/12-arithmetic-intensity/diagram.png)
+![A roofline chart illustrating how memory bandwidth and peak compute limit throughput.](assets/01-inside-a-model/12-arithmetic-intensity/diagram.png)
 
 ## Choose your starting point
 

@@ -10,11 +10,11 @@ In a text-conditioned latent pipeline, a **text encoder** represents the prompt,
 
 The notebook uses a prompt lookup instead of a text encoder, one supplied conditional update, and nearest-neighbor expansion instead of a learned decoder. For example, expanding the row [0.2, 0.8] by a factor of two gives [0.2, 0.2, 0.8, 0.8]. Repeat rows too, so a 2 × 2 latent becomes 4 × 4. Keep the starting latent fixed to isolate the effect of changing the prompt.
 
-![Two prompts condition the same starting latent. Each two-by-two latent is decoded into a six-by-six image.](diagram.png)
+![Two prompts condition the same starting latent. Each two-by-two latent is decoded into a six-by-six image.](../../../assets/01-inside-a-model/08-image-generation-architecture/diagram.png)
 
 ## Results to look for
 
-![One starting latent, two outputs. Control: Same 2 × 2 grid. Hold initialization fixed; Change: Horizontal or vertical. Change prompt conditioning; Result: Two 6 × 6 images. Decode both at the same scale.](result-preview.png)
+![One starting latent, two outputs. Control: Same 2 × 2 grid. Hold initialization fixed; Change: Horizontal or vertical. Change prompt conditioning; Result: Two 6 × 6 images. Decode both at the same scale.](../../../assets/01-inside-a-model/08-image-generation-architecture/result-preview.png)
 
 1. Compare cells that differ between prompt conditions. Both runs should preserve the latent shape.
 2. Expansion makes the grid larger. The pattern difference comes from conditioning before the decoder.

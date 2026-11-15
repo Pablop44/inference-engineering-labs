@@ -12,11 +12,11 @@ The transformer stack updates those vectors while preserving the hidden width at
 
 For two tokens, a hidden width of three, and a vocabulary size of five, the embedding output is `(2, 3)` and the head projection is `(2, 3) @ (3, 5) → (2, 5)`. Taking the final row leaves five candidate scores. The notebook uses deterministic row-wise placeholder blocks so you can focus on these interfaces. Real transformer blocks can mix information across positions through attention.
 
-![Embedding and position signals produce three rows of width two. Decoder blocks preserve that shape. The vocabulary head produces three rows of width four. The last row predicts the next token.](diagram.png)
+![Embedding and position signals produce three rows of width two. Decoder blocks preserve that shape. The vocabulary head produces three rows of width four. The last row predicts the next token.](../../../assets/01-inside-a-model/03-llm-architecture/diagram.png)
 
 ## Results to look for
 
-![Trace the tensor contract. Embedding: 3 × 2. Three positions, width two; Vocabulary head: 3 × 4. Four logits per position; Next token: 4 scores. Use the final position.](result-preview.png)
+![Trace the tensor contract. Embedding: 3 × 2. Three positions, width two; Vocabulary head: 3 × 4. Four logits per position; Next token: 4 scores. Use the final position.](../../../assets/01-inside-a-model/03-llm-architecture/result-preview.png)
 
 1. Check that a repeated token can get a different position signal. Keep the lookup table unchanged so future lookups remain consistent.
 2. If you add a position, another logits row appears. If you grow the vocabulary, the number of columns changes.

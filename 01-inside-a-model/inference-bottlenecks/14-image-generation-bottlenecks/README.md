@@ -10,13 +10,13 @@ Kiely contrasts repeated denoising over a whole latent grid with single-token LL
 
 For a 16 × 16 latent with 2 × 2 patches, there are 64 tokens and 4,096 pairs per head. With head width d, the score product and weighted value product each cost about `2 × tokens² × d` FLOP per head. This exercise estimates those products alone. Softmax, projections, other layers, and memory traffic need separate accounting. The estimate explains why compute can dominate. Materializing large score matrices or changing the attention implementation can shift the actual bottleneck.
 
-![Relative attention FLOP for the baseline, doubling both axes, halving steps, and two branches.](diagram.png)
+![Relative attention FLOP for the baseline, doubling both axes, halving steps, and two branches.](../../../assets/01-inside-a-model/14-image-generation-bottlenecks/diagram.png)
 
 The latency column is a compute floor for the two attention matrix products only. The estimate holds the head layout and number of attention blocks fixed. The 16× result refers to their FLOP count. It does not predict a 16× increase in end-to-end latency.
 
 ## Results to look for
 
-![Trace geometry into request cost. Latent axes: 2× height and width. Keep the patch size fixed; Patch tokens: 4× as many. Compare every token pair; Global attention: 16× FLOP. Hold steps and heads fixed.](result-preview.png)
+![Trace geometry into request cost. Latent axes: 2× height and width. Keep the patch size fixed; Patch tokens: 4× as many. Compare every token pair; Global attention: 16× FLOP. Hold steps and heads fixed.](../../../assets/01-inside-a-model/14-image-generation-bottlenecks/result-preview.png)
 
 1. Track token count and pair count separately. The square appears when comparing every query with every key.
 2. Account for denoiser branches and steps independently. The resulting compute floor covers the modeled attention products.

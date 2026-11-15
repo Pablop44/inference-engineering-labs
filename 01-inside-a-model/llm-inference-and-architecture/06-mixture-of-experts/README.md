@@ -12,11 +12,11 @@ Suppose one token gives expert scores `[2, 0, 1]`. Top-1 uses expert 0 with weig
 
 The notebook supplies simple scalar expert functions and fixed router scores. Expert calls measure work in this example. If many tokens select the same expert, its call count can remain high even though most experts are skipped per token. In a distributed model, that imbalance can matter alongside communication and batching.
 
-![For scores 2, 0, and 1, top-2 routing selects experts 0 and 2. Their outputs 10 and 4 are combined with weights 0.73 and 0.27. Expert 1 is skipped.](diagram.png)
+![For scores 2, 0, and 1, top-2 routing selects experts 0 and 2. Their outputs 10 and 4 are combined with weights 0.73 and 0.27. Expert 1 is skipped.](../../../assets/01-inside-a-model/06-mixture-of-experts/diagram.png)
 
 ## Results to look for
 
-![Expert selection versus device load. Top-1: 3 / 1 / 0. Four expert calls in total; Top-2: 4 / 3 / 1. Eight expert calls in total; Dense baseline: 4 / 4 / 4. Twelve expert calls in total.](result-preview.png)
+![Expert selection versus device load. Top-1: 3 / 1 / 0. Four expert calls in total; Top-2: 4 / 3 / 1. Eight expert calls in total; Dense baseline: 4 / 4 / 4. Twelve expert calls in total.](../../../assets/01-inside-a-model/06-mixture-of-experts/result-preview.png)
 
 1. Track expert IDs alongside their scores. A top-1 result gives its single expert all the weight.
 2. Count calls for each expert and compare the maximum as well as the sum. The busiest expert can dominate a distributed step.
