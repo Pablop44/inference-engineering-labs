@@ -22,7 +22,7 @@ I started this project while reading Philip Kiely's *Inference Engineering* to t
 
 ## Learning roadmap
 
-[0. Introduction to inference engineering](#0-introduction-to-inference-engineering) · [1. Inside a model](#1-inside-a-model) · [2. Running and benchmarking models](#2-running-and-benchmarking-models) · [3. Optimizing generation](#3-optimizing-generation) · [4. Inference beyond text](#4-inference-beyond-text) · [5. Operating an inference service](#5-operating-an-inference-service)
+[0. Introduction to inference engineering](#0-introduction-to-inference-engineering) · [1. Inside a model](#1-inside-a-model) · [2. Hardware for inference](#2-hardware-for-inference) · [3. Running and benchmarking models](#3-running-and-benchmarking-models) · [4. Optimizing generation](#4-optimizing-generation) · [5. Inference beyond text](#5-inference-beyond-text) · [6. Operating an inference service](#6-operating-an-inference-service)
 
 - **Done** — The reading or all listed labs for the subtopic are published and verified.
 - **WIP** — The subtopic is partially published or in development.
@@ -80,7 +80,17 @@ I started this project while reading Philip Kiely's *Inference Engineering* to t
 
 - [1.15. Optimizing attention](labs/01-inside-a-model/15-optimizing-attention/README.md) · Match dense attention with chunked softmax and test what changes with a sliding window.
 
-## 2. Running and benchmarking models
+## 2. Hardware for inference
+
+Based on Chapter 3 of Philip Kiely's *Inference Engineering*. This module looks at the whole instance, including accelerator memory, partitioning, and device interconnects.
+
+| Subtopic | Status | Planned work |
+| --- | --- | --- |
+| Choosing an inference instance | Coming soon | Compare dense compute at the same precision, check usable memory on a full GPU and a MIG partition, and estimate transfer time for a multi-GPU deployment. |
+
+For GPU architecture, accelerator families, and local inference, see Chapter 3, §§3.1–3.5. Local inference measurements fit under runtime benchmarking.
+
+## 3. Running and benchmarking models
 
 | Subtopic | Status | Planned work |
 | --- | --- | --- |
@@ -88,7 +98,7 @@ I started this project while reading Philip Kiely's *Inference Engineering* to t
 | Inference engines and load testing | Coming soon | Serve a small LLM with an inference engine. Vary concurrency and measure p50 and p95 latency, tokens per second, and time to first token. |
 | Profiling and kernel fusion | Coming soon | Profile an inference run to find data copies and expensive operations. On a GPU, compare a sequence of kernels with a fused implementation. |
 
-## 3. Optimizing generation
+## 4. Optimizing generation
 
 | Subtopic | Status | Planned work |
 | --- | --- | --- |
@@ -98,7 +108,7 @@ I started this project while reading Philip Kiely's *Inference Engineering* to t
 | Tensor parallelism | Coming soon | Compare inference on one GPU with tensor parallelism across two GPUs. Measure latency and communication overhead. |
 | Prefill and decode disaggregation | Coming soon | Simulate separate prefill and decode queues. Measure how the request mix and KV cache transfer costs affect latency. |
 
-## 4. Inference beyond text
+## 5. Inference beyond text
 
 | Subtopic | Status | Planned work |
 | --- | --- | --- |
@@ -107,7 +117,7 @@ I started this project while reading Philip Kiely's *Inference Engineering* to t
 | Speech recognition and synthesis | Coming soon | Transcribe audio with different chunk sizes and measure latency and word error rate. For speech synthesis, measure time to first audio chunk. |
 | Image and video generation benchmarks | Coming soon | Vary the number of denoising steps and compare latency and generated images using fixed prompts and seeds. On a GPU, extend the experiment to short video clips and vary the frame count. |
 
-## 5. Operating an inference service
+## 6. Operating an inference service
 
 | Subtopic | Status | Planned work |
 | --- | --- | --- |
@@ -145,6 +155,5 @@ If you reproduce a lab and get a different result, open an issue with your hardw
 Thanks to Philip Kiely for *Inference Engineering* (Baseten Books), the primary reference for these labs. These sections provide background for the experiments.
 
 - **Foundations and metrics** — Chapters 0 and 1 cover inference fundamentals, model selection, latency, and throughput.
-- **Hardware** — Chapter 3 covers GPU architecture, memory hierarchy, accelerator generations, and instance types.
 - **Capacity and infrastructure** — Section 7.3 covers GPU provisioning and capacity across providers.
 - **Glossary and further reading** — Appendices A and B.

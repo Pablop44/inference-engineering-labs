@@ -29,10 +29,11 @@ These labs are for software engineers comfortable with Python, debugging, and ba
 ## What we will build and measure
 
 1. **Inside a model** — Implement small operations and inspect causal attention, prefill, and decode.
-2. **Running and benchmarking models** — Compare runtimes, profile execution, and measure latency and throughput under different loads.
-3. **Optimizing generation** — Test quantization, speculative decoding, and cache reuse against baselines, then explore parallelism and disaggregation.
-4. **Inference beyond text** — Run experiments on embeddings, images, audio, and video using metrics suited to each workload.
-5. **Operating an inference service** — Package a service, load-test it, and measure how cold starts, scaling, streaming, and rollouts affect clients.
+2. **Hardware for inference** — Compare instance specifications, GPU partitions, and interconnects.
+3. **Running and benchmarking models** — Compare runtimes, profile execution, and measure latency and throughput under different loads.
+4. **Optimizing generation** — Test quantization, speculative decoding, and cache reuse against baselines, then explore parallelism and disaggregation.
+5. **Inference beyond text** — Run experiments on embeddings, images, audio, and video using metrics suited to each workload.
+6. **Operating an inference service** — Package a service, load-test it, and measure how cold starts, scaling, streaming, and rollouts affect clients.
 
 We will track time to first token, time per output token, throughput, and tail latency where relevant. Each lab will state what is held fixed and what is varied, such as input length, batch size, or request concurrency. See the [roadmap](../README.md#learning-roadmap) for the current status of each module.
 
