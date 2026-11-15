@@ -8,6 +8,10 @@ A GPU model name tells you only part of what you need to know. This chapter look
 | --- | --- | --- |
 | Choosing an inference instance | Done | [2.1. Choosing an inference instance](01-choosing-an-inference-instance/README.md) · Compare dense compute quotes, test whether a replica fits a MIG partition, and check a two-GPU link against a transfer budget. |
 
+## Hardware reference
+
+[Data center accelerator catalog](accelerator-catalog.md) compares NVIDIA, AMD Instinct, and Intel hardware by architecture, memory capacity, and bandwidth, with links to official specifications.
+
 ## Reading map
 
 | Book section | How it fits here |
