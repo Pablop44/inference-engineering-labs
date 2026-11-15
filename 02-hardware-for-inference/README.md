@@ -10,7 +10,7 @@ A GPU model name tells you only part of what you need to know. This chapter look
 
 ## Hardware reference
 
-[Data center accelerator catalog](accelerator-catalog.md) compares NVIDIA, AMD Instinct, and Intel hardware by architecture, memory capacity, and bandwidth, with links to official specifications.
+[Data center accelerator catalog](accelerator-catalog.md) compares NVIDIA, AMD Instinct, Intel, and Google Cloud accelerators by architecture, memory capacity, and bandwidth, with links to official specifications.
 
 ## Reading map
 

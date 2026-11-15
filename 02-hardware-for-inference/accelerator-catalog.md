@@ -2,7 +2,7 @@
 
 [Hardware for inference](README.md) · [Lab 2.1](01-choosing-an-inference-instance/README.md)
 
-A reference for reading instance specifications before sizing or benchmarking a workload. It covers major generations of NVIDIA data center GPUs, AMD Instinct, and Intel data center accelerators, with representative models, selected legacy hardware, and publicly documented newer designs. The vendor indexes cover additional SKUs. Cloud availability depends on the provider, region, and instance. The presence of a specification here does not establish availability.
+A reference for reading instance specifications before sizing or benchmarking a workload. It covers major generations of NVIDIA data center GPUs, AMD Instinct, Intel data center accelerators, and Google Cloud TPUs, with representative models, selected legacy hardware, and publicly documented newer designs. The vendor indexes cover additional SKUs. Cloud availability depends on the provider, region, and instance. The presence of a specification here does not establish availability.
 
 ## How to compare rows
 
@@ -63,6 +63,26 @@ Gaudi devices are dedicated AI accelerators. Intel Flex and Max are GPUs with di
 | Xe-HPG | Data Center GPU Flex 170 | 16 GB GDDR6 | 576 GB/s | PCIe 4.0 x16 | [Flex 170 specifications](https://www.intel.com/content/www/us/en/products/sku/230019/intel-data-center-gpu-flex-170/specifications.html) |
 | Xe-HPC | Data Center GPU Max 1550 | 128 GB HBM2e | 3,276.8 GB/s | PCIe 5.0 x16 host interface | [Max 1550 specifications](https://www.intel.com/content/www/us/en/products/sku/232873/intel-data-center-gpu-max-1550/specifications.html) |
 | Xe3P | Crescent Island | 160 GB LPDDR5X (announced) | Unspecified in cited announcement | Published design details | [Intel announcement](https://www.intel.com/content/www/us/en/newsroom/news/artificial-intelligence/intel-to-expand-ai-accelerator-portfolio-with-new-gpu.html) |
+
+## Google Cloud TPUs
+
+TPUs are Google's custom accelerators for machine learning. Compare **HBM per chip** for model fit and check the slice's chip count and topology for a sharded deployment. Aggregate HBM across a slice is distributed across chips. The runtime reserves part of physical HBM, so allocatable memory can be lower. HBM bandwidth describes local memory access. Inter-chip interconnect (ICI) bandwidth describes communication between chips. [Google Cloud TPU machines](https://docs.cloud.google.com/compute/docs/tpus/tpu-machines), [TPU system architecture](https://docs.cloud.google.com/tpu/docs/system-architecture-tpu-vm).
+
+| Generation | Model | HBM capacity | Peak HBM bandwidth | Peak compute or deployment detail | Official specs |
+| --- | --- | --- | --- | --- | --- |
+| 2 | TPU v2 | See linked architecture paper | See linked architecture paper | Legacy Cloud TPU API configuration | [TPU v2 documentation](https://docs.cloud.google.com/tpu/docs/v2) |
+| 3 | TPU v3 | 32 GiB per chip | 900 GB/s per chip | 123 TFLOP/s BF16 per chip | [TPU v3 specifications](https://docs.cloud.google.com/tpu/docs/v3) |
+| 4 | TPU v4 | 32 GiB per chip | 1,200 GB/s per chip | 275 TFLOP/s BF16 per chip | [TPU v4 specifications](https://docs.cloud.google.com/tpu/docs/v4) |
+| 5 | TPU v5e | 16 GiB per chip | 819 GB/s per chip | 197 TFLOP/s BF16 per chip | [TPU v5e specifications](https://docs.cloud.google.com/tpu/docs/v5e) |
+| 5 | TPU v5p | 95 GiB per chip | 2,765 GB/s per chip | 459 TFLOP/s BF16 per chip | [Google Cloud TPU specifications](https://docs.cloud.google.com/docs/compute-area/tpus) |
+| 6 | Trillium (v6e) | 32 GiB per chip | 1,638 GB/s per chip | 918 TFLOP/s BF16 per chip | [Google Cloud TPU specifications](https://docs.cloud.google.com/docs/compute-area/tpus) |
+| 7 | Ironwood (TPU7x) | 192 GiB per chip | 7,380 GB/s per chip | 2,307 TFLOP/s BF16 per chip | [Ironwood specifications](https://docs.cloud.google.com/tpu/docs/tpu7x) |
+| 8 | TPU 8t | 216 GB per chip | 6,528 GB/s per chip | 12.6 PFLOP/s FP4 per chip; published design figures | [TPU 8t and 8i technical specifications](https://cloud.google.com/blog/products/compute/tpu-8t-and-tpu-8i-technical-deep-dive) |
+| 8 | TPU 8i | 288 GB per chip | 8,601 GB/s per chip | 10.1 PFLOP/s FP4 per chip; published design figures | [TPU 8t and 8i technical specifications](https://cloud.google.com/blog/products/compute/tpu-8t-and-tpu-8i-technical-deep-dive) |
+| 8 | TPU 8tx | Unspecified in cited announcement | Unspecified in cited announcement | Announced system based on 8t silicon for confidential workloads | [Google Cloud announcement](https://cloud.google.com/blog/topics/ai-infrastructure/tpu-8tx-and-tpu-8i-max) |
+| 8 | TPU 8i Max | Unspecified in cited announcement | 2× TPU 8i per dual-chip package, as announced | Announced dual-chip package | [Google Cloud announcement](https://cloud.google.com/blog/topics/ai-infrastructure/tpu-8tx-and-tpu-8i-max) |
+
+Memory capacity uses the units supplied by Google. The eighth-generation figures are published design specifications or announcement details. Check [Google Cloud TPU machine types](https://docs.cloud.google.com/compute/docs/tpus/tpu-machines) for provisioning details.
 
 ## Use the catalog in the lab
 
