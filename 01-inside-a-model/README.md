@@ -2,7 +2,19 @@
 
 [Learning roadmap](../README.md#learning-roadmap)
 
-Work from linear layers to attention, generation loops, and inference bottlenecks. Each lab folder bundles its guide, notebook, and diagrams.
+Work from linear layers to attention, generation loops, and inference bottlenecks. Each lab has a guide and a notebook with embedded diagrams.
+
+## How this chapter maps to the book
+
+This chapter follows Chapter 2, *Models*, of Philip Kiely's *Inference Engineering* (Baseten Books), pp. 39–69. The labs use small CPU examples to make the mechanisms and cost calculations visible.
+
+| Book section | Repo coverage | Scope |
+| --- | --- | --- |
+| §2.1 Neural Networks | [Lab 1.1](#neural-network-building-blocks) | Affine layers, batched matrix multiplication, and ReLU. Hidden states and encoder/decoder roles recur in Labs 1.3 and 1.8. |
+| §2.2 LLM Inference Mechanics | [Labs 1.2–1.6](#llm-inference-and-architecture) | Prefill, decode, model shapes, transformer blocks, causal attention, and expert routing. Lab 1.2 starts with token IDs and uses greedy selection, with a top-k example. Tokenization, chat templates, and temperature and top-p sampling have no hands-on exercise here. |
+| §2.3 Image Generation Inference Mechanics | [Labs 1.7–1.10](#image-and-video-generation) | Denoising, guidance, latent pipelines, few-step methods, and temporal consistency. The exercises simulate selected mechanisms. Learned denoisers, VAEs, and video models are reading topics here. |
+| §2.4 Calculating Inference Bottlenecks | [Labs 1.11–1.14](#inference-bottlenecks) | Compute and memory time floors, arithmetic intensity, the roofline, KV traffic, and image attention work. Profiling a real model is planned. |
+| §2.5 Optimizing Attention | [Lab 1.15](#memory-efficient-attention) | Online softmax, exact chunked causal attention, and sliding-window attention. The guide explains KV paging conceptually. GPU kernels, KV page allocation, and other attention variants are reading topics here. |
 
 ## Neural network building blocks
 
