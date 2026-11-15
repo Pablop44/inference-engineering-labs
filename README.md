@@ -6,7 +6,7 @@ Implement causal attention, trace a token through prefill and decode, and use a 
 
 [Start with the first lab](01-inside-a-model/01-neural-network-building-blocks/01-linear-layers-and-relu/README.md) · [Explore the roadmap](#learning-roadmap) · [Run the notebooks](#run-the-notebooks-locally)
 
-**15 runnable labs** · **15–20 minutes each** · **Python standard library** · **CPU**
+**16 runnable labs** · **15–20 minutes each** · **Python standard library** · **CPU**
 
 ![A roofline chart illustrating how memory bandwidth and peak compute limit throughput.](assets/01-inside-a-model/12-arithmetic-intensity/diagram.png)
 
