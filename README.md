@@ -6,7 +6,7 @@ Implement causal attention, trace a token through prefill and decode, and use a 
 
 [Start with the first lab](01-inside-a-model/01-neural-network-building-blocks/01-linear-layers-and-relu/README.md) · [Explore the roadmap](#learning-roadmap) · [Run the notebooks](#run-the-notebooks-locally)
 
-**16 runnable labs** · **15–20 minutes each** · **Python standard library** · **CPU**
+**23 runnable labs** · **15–20 minutes each** · **CPU-friendly exercises**
 
 ![A roofline chart illustrating how memory bandwidth and peak compute limit throughput.](assets/01-inside-a-model/12-arithmetic-intensity/diagram.png)
 
@@ -55,7 +55,7 @@ python -m pip install jupyterlab
 python -m jupyterlab
 ```
 
-On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`. Open a lab's `lab.ipynb` and select the Python 3 kernel. The current exercises use the Python standard library. If a check asks you to complete a function, edit and rerun its definition before rerunning the check. Restart the kernel and run all cells in order to verify your finished notebook.
+On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`. Open a lab's `lab.ipynb` and select the Python 3 kernel. The early exercises use the Python standard library. Software labs list additional dependencies in their guides. If a check asks you to complete a function, edit and rerun its definition before rerunning the check. Restart the kernel and run all cells in order to verify your finished notebook.
 
 ## Contributing
 
