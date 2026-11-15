@@ -22,11 +22,21 @@ I started this project while reading Philip Kiely's *Inference Engineering* to t
 
 ## Learning roadmap
 
-[0. Introduction to inference engineering](#0-introduction-to-inference-engineering) · [1. Inside a model](#1-inside-a-model) · [2. Hardware for inference](#2-hardware-for-inference) · [3. Running and benchmarking models](#3-running-and-benchmarking-models) · [4. Optimizing generation](#4-optimizing-generation) · [5. Inference beyond text](#5-inference-beyond-text) · [6. Operating an inference service](#6-operating-an-inference-service)
+| Module |
+| --- |
+| [0. Introduction to inference engineering](#0-introduction-to-inference-engineering) |
+| [1. Inside a model](#1-inside-a-model) |
+| [2. Hardware for inference](#2-hardware-for-inference) |
+| [3. Running and benchmarking models](#3-running-and-benchmarking-models) |
+| [4. Optimizing generation](#4-optimizing-generation) |
+| [5. Inference beyond text](#5-inference-beyond-text) |
+| [6. Operating an inference service](#6-operating-an-inference-service) |
 
-- **Done** — The reading or all listed labs for the subtopic are published and verified.
-- **WIP** — The subtopic is partially published or in development.
-- **Coming soon** — The work is planned.
+| Subtopic status | Meaning |
+| --- | --- |
+| **Done** | The reading or all listed labs for the subtopic are published and verified. |
+| **WIP** | The subtopic is partially published or in development. |
+| **Coming soon** | The work is planned. |
 
 ## 0. Introduction to inference engineering
 
